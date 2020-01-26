@@ -1,0 +1,45 @@
+package arraysEmplement;
+
+import java.util.Scanner;
+
+interface arrys{
+    void average(int arr[]);
+}
+public class ArrayImplement implements arrys {
+    Scanner inp=new Scanner(System.in);
+    public void arraysInput( int arr[]) {
+        System.out.println("enter element of arrys ");
+        for (int i = 0; i <arr.length ; i++) {
+            arr[i]=inp.nextInt();
+
+        }
+        System.out.println("enter array is :");
+        for (int i = 0; i <arr.length ; i++) {
+            System.out.print(arr[i]+" ");
+        }
+
+
+    }
+    @Override
+    public void average(int arr[]) {
+        float avg=0;
+        for (int i = 0; i <arr.length; i++) {
+            avg =arr[i]+avg;
+        }
+        System.out.println("avefrange of arrys is : "+avg/arr.length);
+
+    }
+
+
+    public static void main(String args[]){
+        Scanner input =new Scanner(System.in);
+        System.out.println("ENTER SIZE OF ARRAYS ");
+        int size =input.nextInt();
+        int arr[]=new int[size];
+        ArrayImplement obj =new ArrayImplement();
+        obj.arraysInput(arr);
+        obj.average(arr);
+
+
+}
+}
