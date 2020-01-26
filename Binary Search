@@ -1,0 +1,60 @@
+package arraysEmplement;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ArrayImplement{
+    Scanner inp=new Scanner(System.in);
+    public void arraysInput( int arr[]) {
+        System.out.println("enter element of arrys ");
+        for (int i = 0; i <arr.length ; i++) {
+            arr[i]=inp.nextInt();
+
+        }
+        System.out.println("enter array is :");
+        for (int i = 0; i <arr.length ; i++) {
+            System.out.print(arr[i]+" ");
+        }
+
+
+    }
+
+    ublic void binarySearch(int arr[],int searchValue){
+            Arrays.sort(arr);
+        int count=0;
+        int sIndex=0;
+        int lIndex=arr.length-1;
+        int midIndex =(sIndex+lIndex)/2;
+        while (sIndex<=lIndex){
+            count=count+1;
+            if(arr[midIndex]==searchValue){
+                System.out.println("value :"+searchValue+" at posion "+(midIndex+1));
+                System.out.println("loop run as : "+count);
+                break;
+            }
+            else if (searchValue<arr[midIndex]){
+                lIndex=midIndex-1;
+
+            }
+            else {
+
+                sIndex=midIndex+1;
+            }
+            midIndex=(sIndex+lIndex)/2;
+        }
+        }
+    public static void main(String args[]){
+        Scanner input =new Scanner(System.in);
+
+        ArrayImplement obj =new ArrayImplement();
+        System.out.println("ENTER SIZE OF ARRAYS ");
+        int size =input.nextInt();
+        int arr[]=new int[size];
+        obj.arraysInput(arr);
+        System.out.println("enter value for search :");
+        int searchValue=input.nextInt();
+        obj.binarySearch(arr,searchValue);
+
+}
+}
