@@ -1,0 +1,57 @@
+package stackImplement;
+
+import java.util.Scanner;
+
+public class StackImplement {
+    Scanner sc=new Scanner(System.in);
+    int top=0;
+    char choice;
+    int begin=0;
+
+    public void pushEmplent(int size,int stack[])
+    {
+
+        do {
+            System.out.println("enter value :");
+            int data=sc.nextInt();
+            if (top >= size) {
+                System.out.println("Stack Overflow : ");
+                return;
+            } else {
+                stack[top] = data;
+                top++;
+                System.out.println("value pushed:");
+                System.out.println("want to push more value:");
+                choice =sc.next().charAt(0);
+
+            }
+
+        }
+        while (choice=='y');
+    }
+    public void pop(int stack[])
+    {
+        while (top!=begin){
+        if(top<begin)
+        {
+            System.out.println("stack is empty :");
+            return;
+        }
+        else
+            {
+                System.out.print(stack[top-1]+" ");
+                top--;
+            }
+    }
+    }
+    public static void main(String... PankajSharma)
+    {
+        StackImplement obj= new StackImplement();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter size of arrays :");
+        int size =sc.nextInt();
+        int stack[]=new int[size];
+        obj.pushEmplent(size,stack);
+        obj.pop(stack);
+    }
+}
