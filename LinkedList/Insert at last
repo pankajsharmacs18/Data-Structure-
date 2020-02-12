@@ -1,0 +1,65 @@
+package link;
+
+import java.util.Scanner;
+
+public class Linked
+{
+     Node head;
+     static class Node
+     {
+         int data ;
+         Node  next;
+         Node(int data)
+         {
+             this.data=data;
+             next=null;
+         }
+     }
+     public void printList(){
+         Node temp =head;
+         while (temp!=null)
+         {
+             System.out.println("DATA IS :"+temp.data+" AT NODE "+temp.next);
+             temp=temp.next;
+         }
+     }
+    
+     public void insertATlast(int data)
+     {
+         Node new_node=new Node(data);
+        if(head==null)
+        {
+            head=new Node(data);
+            return;
+        }
+        new_node.next=null;
+        Node last =head;
+        while (last.next!=null)
+        {
+            last=last.next;
+        }
+        Node new_Node=new Node(data);
+        last.next=new_Node;
+        return;
+     }
+    public static void main(String args[])
+    {
+        Linked obj=new Linked();
+        obj.head=new Node(1);
+        Node first = new Node(2);
+        Node secound =new Node(3);
+        Node third =new Node(4);
+        Node four = new Node(5);
+        Node five=new Node(8);
+        Node six=new Node(9);
+        obj.head.next=first;
+        first.next=secound;
+        secound.next=third;
+        third.next=four;
+        four.next=five;
+        five.next=six;
+      
+        obj.insertATlast(456);
+        obj.printList();
+    }
+}
