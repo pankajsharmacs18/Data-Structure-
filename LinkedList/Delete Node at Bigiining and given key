@@ -1,0 +1,99 @@
+package delete;
+
+public class DeleteLINK {
+    Node head;
+    static class Node{
+        int data;
+        Node next;
+        Node(int data)
+        {
+            this.data=data;
+            next=null;
+        }
+    }
+    public void printList()
+    {
+        if(head==null)
+        {
+            System.out.println("LIST IS EMPTY :");
+            return;
+        }
+        else
+            {
+                Node tempHead=head;
+                while (tempHead!=null)
+                {
+                    System.out.print(tempHead.data+" ");
+                    tempHead=tempHead.next;
+                }
+            }
+    }
+   public void deleteFirstElement()
+   {
+       if(head==null)
+       {
+           System.out.println("list is empty :");
+           return;
+       }
+       else
+           {
+              head=head.next;
+           }
+   }
+   public void deleteKEY(int value)
+   {
+       if(head==null)
+       {
+           System.out.println("LINKED LSIT IS EMPTY :");
+           return;
+       }
+       else if(head.data==value)
+       {
+           head=head.next;
+           return;
+       }
+       else
+           {
+               Node tempHead=head,prev=null;
+               while(tempHead.next!=null&&tempHead.data!=value)
+               {
+                   prev=tempHead;
+                   tempHead=tempHead.next;
+
+               }
+               prev.next=tempHead.next;
+
+           }
+   }
+    public static void main(String... PankajSAHRMA)
+    {
+        DeleteLINK obj= new DeleteLINK();
+        obj.head=new Node(1);
+        Node first=new Node(2);
+        Node sec=new Node(3);
+        Node third=new Node(4);
+        Node fourth=new Node(5);
+        Node fiVE=new Node(6);
+        Node six=new Node(7);
+        Node saven=new Node(8);
+        Node enght=new Node(9);
+        Node nine=new Node(10);
+        Node ten=new Node(11);
+        obj.head.next=first;
+        first.next=sec;
+        sec.next=third;
+        third.next=fourth;
+        fourth.next=fiVE;
+        fiVE.next=six;
+        six.next=saven;
+        saven.next=enght;
+        enght.next=nine;
+        nine.next=ten;
+        ten.next=null;
+        obj.printList();
+       // obj.deleteFirstElement();
+        System.out.println("detlete element :");
+        obj.deleteKEY(5);
+        obj.printList();
+    }
+}
