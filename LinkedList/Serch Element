@@ -1,0 +1,85 @@
+package LINKED;
+
+import java.util.Scanner;
+
+public class LinkedL {
+    Node head;
+    static class Node
+    {
+        int data;
+        Node next;
+        Node(int data)
+        {
+            this.data=data;
+            next=null;
+        }
+    }
+    public void priList()
+    {
+        Node tempHead=head;
+        if(tempHead!=null)
+        {
+            while (tempHead!=null)
+            {
+                System.out.print(tempHead.data+" ");
+                tempHead=tempHead.next;
+            }
+        }
+    }
+   
+    public void searchElement(int value)
+    {
+        if(head==null)
+        {
+            System.out.println("list is empty :");
+        }
+        else if (head.data==value)
+        {
+            System.out.println("DATA IS FOUND AT THE HEAD :");
+        }
+        else
+            {
+                Node tempHead=head;
+                int count=1;
+                while (tempHead.data!=value)
+                {
+                    count++;
+                    tempHead=tempHead.next;
+                }
+                System.out.println("value "+value+"is found at "+count);
+            }
+
+    }
+    public static void main(String... PankajSharma)
+    {
+        LinkedL obj=new LinkedL();
+        Scanner input=new Scanner(System.in);
+        obj.head=new Node(10);
+        Node first=new Node(20);
+        Node secound=new Node(30);
+        Node third=new Node(40);
+        Node four=new Node(50);
+        Node five=new Node(60);
+        Node six=new Node(70);
+        Node saven=new Node(80);
+        Node eight=new Node(90);
+        Node nine=new Node(100);
+        Node ten=new Node(110);
+       obj.head.next=first;
+       first.next=secound;
+       secound.next=third;
+       third.next=four;
+       four.next=five;
+       five.next=six;
+       six.next=saven;
+       saven.next=eight;
+       eight.next=nine;
+       nine.next=ten;
+       ten.next=null;
+       obj.priList();
+       //obj.lengthCalc();
+        System.out.println("\nenter value to be search :");
+        int value=input.nextInt();
+        obj.searchElement(value);
+    }
+}
