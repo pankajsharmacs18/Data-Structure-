@@ -1,0 +1,72 @@
+package stackImalement;
+
+import com.sun.org.apache.bcel.internal.generic.GOTO;
+
+import java.util.Scanner;
+
+class StackNodes{
+    StackNodes next;
+    int data;
+    StackNodes(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class StackImplement
+{
+    StackNodes root;
+    public void pushElement(int data)
+    {
+        StackNodes newElement=new StackNodes(data);
+        if(root==null)
+        {
+            root=newElement;
+            return;
+
+        }
+        StackNodes temp=root;
+        root=newElement;
+        root.next=temp;
+        System.out.println("insrted :");
+    }
+    public void pop()
+    {
+        if(root==null)
+        {
+            System.out.println("stack is Empty :");
+        return;
+        }
+        System.out.println(root.data+" ");
+        root=root.next;
+    }
+}
+public class StacMain {
+    public static void main(String... PankajSharma)
+    {
+        StackImplement obj=new StackImplement();
+        Scanner sc=new Scanner(System.in);
+       level:
+        System.out.println("Please Select option \n 1 for more push \n 2 for pop elemnt :");
+        int choose=sc.nextInt();
+        if(choose==1){
+            do{
+            System.out.println("enter value :");
+
+            obj.pushElement(sc.nextInt());
+                System.out.println("enter 1 for more push ");
+        }while (sc.nextInt()==1);
+
+        }
+
+       else if(choose==2){
+        obj.pop();
+        System.out.println("pankaj sharma : ");
+    }
+       else
+           {
+               System.out.println("enter wrong ans : ");
+       
+           }
+    }
+}
