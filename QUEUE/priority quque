@@ -1,0 +1,123 @@
+public class Element {
+  int data;
+  int priority;
+  public Element(int data, int priority) {
+    this.data = data;
+    this.priority = priority;
+  }
+  public int getData() {
+    return data;
+  }
+
+  public void setData(int data) {
+    this.data = data;
+  }
+
+  public int getPriority() {
+    return priority;
+  }
+
+  public void setPriority(int priority) {
+    this.priority = priority;
+  }
+}
+
+class PriorityQueuebyArray
+{
+  int front;
+  int rear;
+  Element arr[];
+
+  public PriorityQueuebyArray(int size) {
+    arr = new Element[size];
+    front = -1;
+    rear = -1;
+  }
+  public boolean isfull()
+  {
+    return rear==arr.length+1;
+  }
+  public boolean isempty()
+  {
+    return front ==-1;
+  }
+  public void insert(Element newelement)
+  {
+    int i;
+    if (isfull())
+    {
+      System.out.println("overflow error");
+    }
+    else if(isempty())
+    {
+      front =0;
+      rear++;
+      arr[rear]= newelement;
+    }
+    else
+    {
+      for( i = rear;i>=front;i--)
+      {
+        if (newelement.priority < arr[i].priority) {
+          arr[i + 1] = arr[i];
+        }
+        else {
+          break;
+        }
+
+
+      }
+      arr[i+1]= newelement;
+      rear++;
+    }
+
+  }
+  public void display()
+  {
+    if(isempty())
+    {
+      System.out.println("Queue is empty");
+    }
+    else
+    {
+      for(int i = front;i<=rear;i++)
+        System.out.println(arr[i].data+ " "+ arr[i].priority);
+    }
+  }
+
+  public void dequeue()
+  {
+    if (isempty())
+    {
+      System.out.println("queue underflow");
+    }
+    else
+      System.out.println(arr[front].data + " " + arr[front].priority);
+    front++;
+    if(front>rear)
+    {
+      front = rear =-1;
+    }
+  }
+}
+public class PriorityQueueMain {
+  public static void main(String[] args) {
+    System.out.println("Priority queue example");
+    Element e1 = new Element(27,4);
+    Element e2 = new Element(11,2);
+    Element e3 = new Element(10,2);
+    Element e4 = new Element(20,3);
+    PriorityQueuebyArray obj = new PriorityQueuebyArray(5);
+    obj.insert(e1);
+    obj.insert(e2);
+    obj.insert(e3);
+    obj.insert(e4);
+    obj.display();
+    System.out.println("dequeue element");
+    obj.dequeue();
+    obj.dequeue();
+    System.out.println("after dequeue");
+    obj.display();
+
+  }
+}
