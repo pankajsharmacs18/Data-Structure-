@@ -1,0 +1,54 @@
+package pankajPractice;
+
+import java.util.Scanner;
+
+class ArrayImplement
+{
+    int arr[];
+    Scanner sc=new Scanner(System.in);
+    public void inputArrays(int size)
+    {
+        arr=new int[size];
+        System.out.println("enter element of arrasy :");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+    }
+    public void display()
+    {
+        for (int i = 0; i < arr.length; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+    public void insertElement(int value,int pos)
+    {
+        for (int i = pos-1; i <arr.length -1; i++)
+        {
+        arr[i+1]=arr[i];
+        }
+        arr[pos-1]=value;
+        System.out.println("inserted value is :");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]+" ");
+        }
+    }
+
+}
+public class ArraysMain {
+    public static void main(String... PankajSharma)
+    {
+        ArrayImplement obj=new ArrayImplement();
+        Scanner inp=new Scanner(System.in);
+        System.out.println("enter size of arrasy :");
+        int size=inp.nextInt();
+        obj.inputArrays(size);
+        obj.display();
+        System.out.println("enter value pos and value ");
+        int value=inp.nextInt();
+        int pos=inp.nextInt();
+        obj.insertElement(value,pos);
+        System.out.println("pankaj sharma :");
+    }
+}
