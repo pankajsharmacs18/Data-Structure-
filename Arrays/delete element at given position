@@ -1,0 +1,48 @@
+package arraysPractice;
+
+import java.util.Scanner;
+
+ class ArrayImplement {
+     Scanner sc = new Scanner(System.in);
+     int even = 0, odd = 0;
+     int oddA[];
+     int evenA[];
+
+     public void insertArrays(int arr[]) {
+         System.out.println("\nenter 1st element : ");
+         for (int i = 0; i < arr.length; i++) {
+             arr[i] = sc.nextInt();
+         }
+         System.out.println(" \n st arrys is :");
+         for (int i = 0; i < arr.length; i++) {
+             System.out.print(arr[i] + " ");
+         }
+     }
+     public void deleteEle(int[] arr,int pos)
+     {
+         for (int i = pos-1; i <arr.length -1; i++)
+         {
+         arr[i]=arr[i+1];
+         }
+         for (int i = 0; i <arr.length -1; i++)
+         {
+             System.out.print(arr[i]+" ");
+         }
+     }
+ }
+public class ArrayMain{
+    public static void main(String... PankajShrma) {
+        ArrayImplement obj = new ArrayImplement();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter size of 1st  arrays ");
+        int size = sc.nextInt();
+        int arr[] = new int[size];
+        obj.insertArrays(arr);
+        System.out.println("\n enter position of elemnt to be delted :");
+        int pos =sc.nextInt();
+        obj.deleteEle(arr,pos);
+    }
+
+
+    }
+
