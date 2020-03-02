@@ -1,0 +1,93 @@
+package arraysPractice;
+
+import java.util.Scanner;
+
+ class ArrayImplement {
+     Scanner sc = new Scanner(System.in);
+     int even=0,odd=0;
+     int oddA[];
+     int evenA[];
+     public void insertArrays(int arr[])
+     {
+         System.out.println("\nenter 1st element : ");
+         for (int i = 0; i < arr.length; i++)
+         {
+             arr[i] = sc.nextInt();
+         }
+     }
+
+     public void printArrays(int[] arr)
+     {
+         System.out.println(" \n st arrys is :");
+         for (int i = 0; i < arr.length; i++)
+         {
+             System.out.print(arr[i] + " ");
+         }
+     }
+     public void EvenCount(int[] arr)
+     {
+         for (int i = 0; i <arr.length ; i++)
+         {
+          if(arr[i]%2==0)
+          {
+             even++;
+          }
+          else
+              {
+                  odd++;
+              }
+         }
+     }
+     public void saprate(int arr[])
+     { int j=0,k=0;
+         evenA=new int[even];
+         oddA=new int[odd];
+         for (int i = 0; i <arr.length ; i++)
+         {
+         if(arr[i]%2==0)
+         {
+             evenA[j]=arr[i];
+             j++;
+         }
+         else
+             {
+                 oddA[k]=arr[i];
+                 k++;
+             }
+         }
+     }
+
+public void printBoth()
+{
+    System.out.println("\neven arrays is :");
+    for (int i = 0; i <evenA.length; i++)
+    {
+        System.out.print(evenA[i]+" ");
+    }
+    System.out.println("\n odd arrays is :");
+    for (int i = 0; i < oddA.length; i++)
+    {
+        System.out.print(oddA[i]+" ");
+    }
+}
+
+ }
+
+public class ArrayMain{
+    public static void main(String... PankajShrma)
+    {
+        ArrayImplement obj=new ArrayImplement();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter size of 1st  arrays ");
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        obj.insertArrays(arr);
+        obj.printArrays(arr);
+        obj.EvenCount(arr);
+        obj.saprate(arr);
+        obj.printBoth();
+
+
+
+    }
+}
