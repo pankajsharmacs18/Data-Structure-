@@ -1,0 +1,68 @@
+package arraysPractice;
+
+import java.util.Scanner;
+
+ class ArrayImplement {
+     Scanner sc = new Scanner(System.in);
+
+     public void insertArrays(int arr[]) {
+         System.out.println("enter 1st element : ");
+         for (int i = 0; i < arr.length; i++)
+         {
+             arr[i] = sc.nextInt();
+         }
+     }
+
+     public void printArrays(int[] arr) {
+         System.out.println(" \n st arrys is :");
+         for (int i = 0; i < arr.length; i++)
+         {
+             System.out.print(arr[i] + " ");
+         }
+     }
+     public void findMin(int[] arr)
+     { int pos=0;
+         int min=arr[0];
+         for (int i = 0; i < arr.length;i++)
+         {
+          if(arr[i]<min)
+          {
+              min=arr[i];
+              pos=i;
+          }
+         }
+         System.out.println("\nminum number is : "+min+" at postion "+pos+1);
+     }
+     public void findMax(int[] arr)
+     { int max=0;
+        int pos=0;
+         for (int i = 0; i <arr.length ; i++)
+         {
+             if(arr[i]>max)
+             {
+                 max=arr[i];
+                 pos=i;
+             }
+         }
+         System.out.println("\nMaximum element i is :"+max+" at postion "+pos+1);
+     }
+
+
+ }
+
+public class ArrayMain{
+    public static void main(String... PankajShrma)
+    {
+        ArrayImplement obj=new ArrayImplement();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter size of 1st  arrays ");
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        obj.insertArrays(arr);
+        obj.printArrays(arr);
+        obj.findMax(arr);
+        obj.findMin(arr);
+
+
+    }
+}
