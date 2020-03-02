@@ -1,0 +1,34 @@
+package arraysPractice;
+
+import java.util.Scanner;
+
+public class ArrayMain {
+    Scanner sc=new Scanner(System.in);
+ public void insertArrays(int arr[])
+ {
+     System.out.println("enter element :");
+     for (int i = 0; i <arr.length ; i++)
+     {
+      arr[i]=sc.nextInt();
+     }
+
+ }
+ public void printArrays(int arr[])
+ {
+     System.out.println("entered arrasy is :");
+     for (int i = 0; i <arr.length ; i++)
+     {
+         System.out.print(arr[i]+" ");
+     }
+ }
+    public static void main(String... PankajShrma)
+    {
+        ArrayMain obj=new ArrayMain();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter size oif arrays ");
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        obj.insertArrays(arr);
+        obj.printArrays(arr);
+    }
+}
