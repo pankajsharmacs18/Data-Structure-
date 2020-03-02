@@ -1,0 +1,86 @@
+package arraysPractice;
+
+import java.util.Scanner;
+
+class MatrixImplement
+        {
+         Scanner sc=new Scanner(System.in);
+            public void insertMatrix1(int mat[][],int row,int col)
+            {
+                System.out.println(" enter element : ");
+                for (int i = 0; i <row; i++)
+                {
+                    for (int j = 0; j <col ; j++)
+                    {
+                        mat[i][j]=sc.nextInt();
+
+                    }
+                }
+                for (int i = 0; i <row ; i++)
+                {
+                    for (int j = 0; j <col ; j++)
+                    {
+                        System.out.print(mat[i][j]+" ");
+                    }
+                    System.out.println();
+                }
+            }
+            public void insertMatrix2(int[][] mat2, int row, int col)
+            {
+                System.out.println("enter element of 2 :");
+                for (int i = 0; i <row ; i++)
+                {
+                    for (int j = 0; j <col ; j++)
+                    {
+                    mat2[i][j]=sc.nextInt();
+                    }
+                }
+                for (int i = 0; i <row ; i++)
+                {
+                    for (int j = 0; j <col ; j++)
+                    {
+                        System.out.print(mat2[i][j]+" ");
+                    }
+                    System.out.println();
+                }
+            }
+            public void subMatirx(int[][] sum,int[][] mat1,int[][] mat2,int row,int col)
+            {
+                for (int i = 0; i <row ; i++)
+                {
+                    for (int j = 0; j <col ; j++)
+                    {
+                    sum[i][j] =mat1[i][j]-mat2[i][j];
+                    }
+                }
+                System.out.println("sum if matrix ");
+                for (int i = 0; i <row ;i++)
+                {
+                    for (int j = 0; j <col ; j++)
+                    {
+                        System.out.print(sum[i][j]+ " ");
+                    }
+                    System.out.println();
+                }
+            }
+        }
+public class ArrayMain{
+    public static void main(String... PankajShrma)
+    {
+        MatrixImplement obj=new MatrixImplement();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter row and coloumn of matrix : ");
+        int row=sc.nextInt();
+        int col=sc.nextInt();
+        int mat[][]=new int[row][col];
+        int mat2[][]=new int[row][col];
+        int sum[][]=new int[row][col];
+        obj.insertMatrix1(mat,row,col);
+        obj.insertMatrix2(mat2,row,col);
+        obj.subMatirx(sum,mat,mat2,row,col);
+
+    }
+
+
+    }
+
