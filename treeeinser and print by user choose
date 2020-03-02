@@ -1,0 +1,133 @@
+package treePan;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+class Node
+{
+    Node left;
+    Node right;
+    int data;
+    Node(int data)
+    {
+        this.data=data;
+        right=null;
+        left=null;
+    }
+}
+ class TreeImplement
+ {
+     Node root;
+     public void insertElement(int data)
+     {
+         Node n1=new Node(data);
+         if(root==null)
+         {
+             root=n1;
+             return;
+         }
+         Queue<Node> que=new LinkedList<Node>();
+         que.add(root);
+         while (!que.isEmpty())
+         {
+             Node pre=que.remove();
+             if(pre.left==null)
+             {
+                 pre.left=n1;
+                 return;
+             }
+             else if(pre.right==null)
+             {
+                 pre.right=n1;
+                 return;
+             }
+             else
+                 {
+                     que.add(pre.left);
+                     que.add(pre.right);
+                 }
+         }
+
+     }
+     public void printInOrder(Node node)
+     {
+         if(node==null)
+         {
+             return;
+         }
+         printInOrder(node.left);
+         System.out.println(node.data);
+         printInOrder(node.right);
+     }
+     public void printPostOrder(Node node)
+     {
+         if(node==null)
+         {
+             return;
+         }
+         printPostOrder(node.left);
+         printPostOrder(node.right);
+         System.out.println(node.data);
+
+     }
+     public void printPreOrder(Node node)
+     {
+         if(node==null)
+         {
+             return;
+         }
+         System.out.println(node.data);
+         printPreOrder(node.left);
+         printPreOrder(node.right);
+     }
+     void printPreOrder()
+     {
+         printPreOrder(root);
+     }
+     void printPostOrder()
+     {
+         printPostOrder(root);
+     }
+     void printInOrder()
+     {
+         printInOrder(root);
+     }
+ }
+class  TreePanMain {
+    public static void main(String... PankajSharma)
+    {
+        int i=0;
+        TreeImplement obj=new TreeImplement();
+        Scanner sc=new Scanner(System.in);
+        do{
+            System.out.println("enter value :");
+            int value=sc.nextInt();
+            obj.insertElement(value);
+            System.out.println("enter 1 for more ");
+             i=sc.nextInt();
+        }while (i==1);
+        System.out.println("enter \n 1 for pre order print :\n 2for in order print :\n 3 for post order print :");
+        int choose1=sc.nextInt();
+        if(choose1==1)
+        {
+            System.out.println("pre oder is ");
+            obj.printPreOrder();
+        }
+        else if(choose1==2)
+        {
+            System.out.println("in order is :");
+            obj.printInOrder();
+        }
+        else if(choose1==3)
+        {
+            System.out.println("post order is :");
+            obj.printPostOrder();
+        }
+        else
+            {
+                System.out.println("you enter wroong ans .");
+            }
+        
+    }
+}
