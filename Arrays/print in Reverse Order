@@ -1,0 +1,45 @@
+package arraysPractice;
+
+import java.util.Scanner;
+
+ class ArrayImplement {
+    Scanner sc=new Scanner(System.in);
+ public void insertArrays(int arr[])
+ {
+     System.out.println("enter element :");
+     for (int i = 0; i <arr.length ; i++)
+     {
+      arr[i]=sc.nextInt();
+     }
+
+ }
+ public void printArrays(int arr[])
+ {
+     System.out.println("entered arrasy is :");
+     for (int i = 0; i <arr.length ; i++)
+     {
+         System.out.print(arr[i]+" ");
+     }
+ }
+ public void printReverse(int arr[])
+ {
+     System.out.println("reverse order is :");
+     for (int i =arr.length-1;i>=0; i--)
+     {
+         System.out.print(arr[i]+" ");
+     }
+ }
+}
+public class ArrayMain{
+    public static void main(String... PankajShrma)
+    {
+        ArrayImplement obj=new ArrayImplement();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter size oif arrays ");
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        obj.insertArrays(arr);
+        obj.printArrays(arr);
+        obj.printReverse(arr);
+    }
+}
