@@ -1,0 +1,58 @@
+package arraysPractice;
+
+import java.util.Scanner;
+
+ class ArrayImplement {
+     Scanner sc = new Scanner(System.in);
+
+    public void insertArrys(int arr[])
+    {
+        System.out.println("enter 1st element : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+        arr[i]=sc.nextInt();
+        }
+    }
+    
+   public void sortArrys(int arr[])
+   {
+
+       for (int i = 0; i <arr.length ; i++)
+       {    int temp=0;
+           for (int j = 0; j <arr.length-i-1 ; j++)
+           {
+               if(arr[j]<res[j+1])
+               {
+                   temp=arr[j];
+                  arr[j]=arr[j+1];
+                   arr[j+1]=temp;
+               }
+           }
+       }
+   }
+   public void printArrays(int arr[])
+   {
+       System.out.println("\n  sorted resulted arrys is :");
+       for (int i = 0; i <arr.length; i++)
+       {
+           System.out.print(arr[i]+" ");
+       }
+   }
+ }
+public class ArrayMain{
+    public static void main(String... PankajShrma)
+    {
+        ArrayImplement obj=new ArrayImplement();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter size of 1st  arrays ");
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        
+        
+        obj.insertArrays(arr);
+        obj.sortArrys(arr);
+       obj.printArrays(arr);
+
+
+    }
+}
