@@ -1,0 +1,61 @@
+package arraysPractice;
+
+import java.util.Scanner;
+
+class MatrixImplement
+        {
+         Scanner sc=new Scanner(System.in);
+            public void insertMatrix1(int mat[][],int row,int col)
+            {
+                System.out.println(" enter element : ");
+                for (int i = 0; i <row; i++)
+                {
+                    for (int j = 0; j <col ; j++)
+                    {
+                        mat[i][j]=sc.nextInt();
+
+                    }
+                }
+                for (int i = 0; i <row ; i++)
+                {
+                    for (int j = 0; j <col ; j++)
+                    {
+                        System.out.print(mat[i][j]+" ");
+                    }
+                    System.out.println();
+                }
+            }
+            public void rightSum(int[][] mat,int row,int col)
+            { int sum=0;
+                System.out.println("\n transpose of matrix ");
+                for (int i = 0; i <row; i++)
+                {
+                    for (int j = 0; j <col; j++)
+                    {
+                       if(i==j)
+                       {
+                           sum=sum+mat[i][j];
+                       }
+                    }
+                }
+                System.out.println("sum of right diagonal is : "+sum);
+            }
+
+        }
+public class ArrayMain{
+    public static void main(String... PankajShrma)
+    {
+        MatrixImplement obj=new MatrixImplement();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter row and coloumn of matrix : ");
+        int row=sc.nextInt();
+        int col=sc.nextInt();
+        int mat[][]=new int[row][col];
+        obj.insertMatrix1(mat,row,col);
+        obj.rightSum(mat,row,col);
+
+    }
+
+
+    }
+
