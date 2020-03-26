@@ -1,0 +1,123 @@
+package stackImplement;
+
+import java.util.EmptyStackException;
+import java.util.Scanner;
+
+class StackImplement
+{
+    Scanner inp=new Scanner(System.in);
+    int rear=0;
+    int front=0;
+
+    public void push(int arr[])
+    {
+        int chos=0;
+        try {
+
+
+        do
+            {
+                System.out.println("enter values to be ineseter ");
+            arr[front] = inp.nextInt();
+            front++;
+            System.out.println("Value is inserted \n  Enter 1 for more vluaue ");
+            chos=inp.nextInt();
+        }while (chos==1);
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println(e);
+            implOption(arr);
+        }
+        implOption(arr);
+    }
+    public void peek(int[] arr)
+    {
+        
+        try
+        {
+            System.out.println(arr[front-1]+" at index "+front);
+            return;
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println(e);
+        }
+
+    }
+    public void remove(int arr[])
+    {
+        try {
+            System.out.println(arr[front-1]+"   is removed ");
+            front--;
+        }
+        catch (NullPointerException e)
+        {
+            System.out.println(e);
+        }
+        catch (EmptyStackException e)
+        {
+            System.out.println(e);
+        }
+    }
+    public void size()
+    {
+        System.out.println("size of stack is "+front);
+    }
+    public void dispaly(int[] arr)
+    {
+        System.out.println("Input stack is : ");
+        for (int i = 0; i < arr.length; i++)
+        {
+            System.out.print(arr[i]+ "  ");
+        }
+    }
+    public void implOption(int[] arr)
+    {
+        System.out.println("please choose option \n 1 for insert Element \n 2 for remove element \n 3 for peek Element \n 4 for knows size os stack \n 5 for display: ");
+        Scanner inp=new Scanner(System.in);
+        int opt=inp.nextInt();
+        if(opt==1)
+        {
+        push(arr);
+        }
+        else if(opt==2)
+        {
+            remove(arr);
+        }
+        else if(opt==3)
+        {
+            peek(arr);
+
+        }
+        else if(opt==3)
+        {
+            size();
+        }
+        else if (opt==4)
+        {
+
+        }
+        else if(opt==5)
+        {
+            dispaly(arr);
+        }
+        else
+            {
+                implOption(arr);
+            }
+    }
+}
+public class StackMain {
+    public static void main(String... PankajSharma)
+    {
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter size of arrays ");
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        StackImplement obj=new StackImplement();
+        obj.implOption(arr);
+        System.out.println("pankaj sharma : ");
+    }
+}
