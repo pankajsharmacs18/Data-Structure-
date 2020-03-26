@@ -1,0 +1,64 @@
+package queueImplement;
+
+import javax.print.attribute.standard.NumberUp;
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class QueueImple
+{   Node front;
+    Node rear=null;
+    public void addEle( int value )
+    {
+        Node new_val=new Node(value);
+        if(front==null)
+        {
+            front=new_val;
+            rear=new_val;
+            return;
+        }
+        rear.next=new_val;
+        rear=new_val;
+
+    }
+    public void display()
+    {
+        System.out.println(" Enter list is :");
+        Node temp=front;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+"  ");
+            temp=temp.next;
+        }
+    }
+    public void deQueue()
+    {
+        System.out.println(front.data+" removed from queue :" );
+        front=front.next;
+    }
+}
+public class QueueMain {
+    public static void main(String... PankajSharma)
+    {
+        int chose=0;
+        Scanner sc=new Scanner(System.in);
+        QueueImple obj=new QueueImple();
+        do {
+            System.out.println("enter value to be inseeted : ");
+            obj.addEle(sc.nextInt());
+            System.out.println("enter 1 for more value  : ");
+            chose=sc.nextInt();
+        }while (chose==1);
+        obj.display();
+        obj.deQueue();
+        obj.display();
+    }
+}
