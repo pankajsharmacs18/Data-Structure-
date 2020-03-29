@@ -1,0 +1,59 @@
+package sorting;
+
+import java.util.Scanner;
+
+class ArrayImp
+{
+    int arr;
+    Scanner inp=new Scanner(System.in);
+    public void inputArrays(int[] arr)
+    {
+        System.out.println("entr arrays input :");
+        for (int i = 0; i <arr.length ; i++)
+        {
+        arr[i]=inp.nextInt();
+        }
+    }
+    public void displayArrys(int[] arr)
+    {
+
+        System.out.println("input arr is : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            System.out.print(arr[i]+"  ");
+        }
+    }
+    public void recursiveSort(int[] arr,int size)
+    {
+        if(size==1)
+        {
+            return;
+        }
+        for (int i = 0; i <size-1 ; i++)
+        {
+            if(arr[i]>arr[i+1])
+            {
+                int temp=arr[i];
+                arr[i]=arr[i+1];
+                arr[i+1]=temp;
+            }
+            recursiveSort(arr,size-1);
+        }
+    }
+}
+public class SortingMain {
+    public static void main(String... PankajSharma)
+
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter size of arrays : ");
+        int size=sc.nextInt();
+        ArrayImp obj=new ArrayImp();
+        int[] arr=new int[size];
+        obj.inputArrays(arr);
+        obj.displayArrys(arr);
+obj.recursiveSort(arr,size);
+obj.displayArrys(arr);
+        System.out.println("pnkaj sharma :");
+    }
+}
