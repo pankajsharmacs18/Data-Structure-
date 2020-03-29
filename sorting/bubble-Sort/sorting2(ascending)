@@ -1,0 +1,69 @@
+package sorting;
+
+import java.util.Scanner;
+
+class ArrayImp
+{
+    int arr;
+    Scanner inp=new Scanner(System.in);
+    public void inputArrays(int[] arr)
+    {
+        System.out.println("entr arrays input :");
+        for (int i = 0; i <arr.length ; i++)
+        {
+        arr[i]=inp.nextInt();
+        }
+    }
+    public void displayArrys(int[] arr)
+    {
+
+        System.out.println("input arr is : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            System.out.print(arr[i]+"  ");
+        }
+    }
+  
+    public void sort2(int[] arr)
+    {
+int count=0,temp=0;
+        for (int i = 0; i <arr.length ; i++)
+        {
+            for (int j = 0; j <arr.length-1-i ; j++)
+            {
+                count++;
+                if(arr[j]>arr[j+1])
+                {
+                    temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+        }
+        System.out.println("sorted arrys is :");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println("loop run at time of : "+count);
+    }
+
+
+}
+public class SortingMain {
+    public static void main(String... PankajSharma)
+
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter size of arrays : ");
+        int size=sc.nextInt();
+        ArrayImp obj=new ArrayImp();
+        int[] arr=new int[size];
+        obj.inputArrays(arr);
+        obj.displayArrys(arr);
+       
+        obj.sort2(arr);
+       
+        System.out.println("pnkaj sharma :");
+    }
+}
