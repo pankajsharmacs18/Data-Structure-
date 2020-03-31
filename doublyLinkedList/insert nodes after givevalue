@@ -1,0 +1,90 @@
+package doublyLinked;
+
+import java.util.Scanner;
+
+class Node{
+    int data;
+    Node pre;
+    Node next;
+    Node(int data)
+    {
+        this.data=data;
+        pre=null;
+        next=null;
+    }
+}
+class ListIMPL
+{
+    Node head;
+    public void insert(int value)
+    {
+        Node noW_ELE=new Node(value);
+        if(head==null)
+        {
+            head=noW_ELE;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        noW_ELE.pre=temp;
+        temp.next=noW_ELE;
+    }
+    public void display()
+    {
+        Node temp=head;
+        if(head==null)
+        {
+            System.out.println("list is Empty : ");
+            return;
+        }
+        while (temp!=null)
+        {
+            System.out.print(temp.data+"  ");
+            temp=temp.next;
+        }
+
+    }
+    public void insertAtFront(int value,int preValue)
+    {
+        Node new_Ele=new Node(value);
+        Node temp=head;
+        if(head==null)
+        {
+            System.out.println("can't insert previos nodes : ");
+        return;
+        }
+        while (temp.data!=preValue&&temp!=null)
+        {
+            System.out.println("also here ");
+            temp=temp.next;
+        }
+        new_Ele.next=temp.next;//store next node references into new nodes :
+        temp.next=new_Ele;// store new elemtn value reference into privious node :
+        new_Ele.next.pre=new_Ele;
+        new_Ele.pre=temp;
+    }
+
+
+}
+public class DoubleMain {
+    public static void main(String... PankajSharma)
+    {
+        ListIMPL obj=new ListIMPL();
+        Scanner sc=new Scanner(System.in);
+        for (int i = 0; i <10 ; i++)
+        {
+            System.out.println("enter value ");
+            obj.insert(sc.nextInt());
+        }
+        obj.display();
+        System.out.println("enter value after these insert value ");
+        int PreValue=sc.nextInt();
+        System.out.println("enter element ot be search : ");
+        obj.insertAtFront(sc.nextInt(),PreValue);
+        obj.display();
+        System.out.println("pankaj sharma");
+    }
+}
