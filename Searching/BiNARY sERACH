@@ -1,0 +1,68 @@
+package serching;
+
+import com.sun.org.apache.xml.internal.resolver.readers.SAXCatalogParser;
+
+import java.util.Scanner;
+
+class Binary
+{
+    Scanner sc=new Scanner(System.in);
+    public void insertEle(int[] arr)
+    {
+        System.out.println("enter value of arrasy :");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+
+    }
+    public void display(int[] arr)
+    {
+        System.out.println("\n inpujt arrays is : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+    public void seachIfSort(int[] arr,int value)
+    {
+
+        int mid=0;
+        int start=0;
+        int end =arr.length;
+        while (start<=end)
+        {
+            mid=(end+start)/2;
+            if(arr[mid]==value)
+            {
+                System.out.println("value is found at position "+mid+1);
+                return;
+            }
+            if(value>arr[mid])
+            {
+                start=mid+1;
+            }
+            else
+                {
+                    end=mid-1;
+                }
+        }
+    }
+}
+public class BianarySearch {
+    public static void main(String... PankajSharma)
+    {
+        Binary obj=new Binary();
+        Scanner inp=new Scanner(System.in);
+        System.out.println("enter size of arrays : ");
+        int size =inp.nextInt();
+        int[] arr=new int[size];
+        obj.insertEle(arr);
+        obj.display(arr);
+        System.out.println("enter value to be search : ");
+        int value=inp.nextInt();
+        obj.seachIfSort(arr,value);
+        System.out.println("pankaj sharma :");
+
+    }
+}
