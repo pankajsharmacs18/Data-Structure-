@@ -1,0 +1,78 @@
+package doublyLinked;
+
+import java.util.Scanner;
+
+class Node{
+    int data;
+    Node pre;
+    Node next;
+    Node(int data)
+    {
+        this.data=data;
+        pre=null;
+        next=null;
+    }
+}
+class ListIMPL
+{
+    Node head;
+    public void insert(int value)
+    {
+        Node noW_ELE=new Node(value);
+        if(head==null)
+        {
+            head=noW_ELE;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        noW_ELE.pre=temp;
+        temp.next=noW_ELE;
+    }
+    public void display()
+    {
+        Node temp=head;
+        if(head==null)
+        {
+            System.out.println("list is Empty : ");
+            return;
+        }
+        while (temp!=null)
+        {
+            System.out.print(temp.data+"  ");
+            temp=temp.next;
+        }
+
+    }
+    public void insertAtFront(int value)
+    {
+        Node new_Ele=new Node(value);
+        new_Ele.pre=null;
+        new_Ele.next=head;
+        if(head!=null)
+        {
+            head.pre=new_Ele;
+        }
+        head=new_Ele;
+    }
+
+}
+public class DoubleMain {
+    public static void main(String... PankajSharma)
+    {
+        ListIMPL obj=new ListIMPL();
+        Scanner sc=new Scanner(System.in);
+        for (int i = 0; i <10 ; i++)
+        {
+            System.out.println("enter value ");
+            obj.insert(sc.nextInt());
+        }
+        obj.display();
+        obj.insertAtFront(14);
+        obj.display();
+        System.out.println("pankaj sharma");
+    }
+}
