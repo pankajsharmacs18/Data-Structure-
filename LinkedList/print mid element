@@ -1,0 +1,73 @@
+package linked;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class ListIMPL
+{
+    Node head;
+    Node temp;
+    public void insert(int data)
+    {
+        Node new_eLE=new Node(data);
+        if(head==null)
+        {
+            head=new_eLE;
+            return;
+        }
+        temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=new_eLE;
+    }
+    public void display()
+    {
+        temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+ "  ");
+        temp=temp.next;
+
+        }
+
+    }
+    public void searchValue(int value)
+    {
+     Node temp=head;
+     Node mid=head;
+     while (temp!=null)
+     {
+     temp=temp.next.next;
+     mid=mid.next;
+     }
+        System.out.println(mid.data+ "   "  );
+    }
+}
+public class listMain
+{
+    public static void main(String... PankajSharma)
+    {
+        ListIMPL obj=new ListIMPL();
+        Scanner sc=new Scanner(System.in);
+        for (int i = 0; i <10 ; i++)
+        {
+            System.out.println("enter value : ");
+            obj.insert(sc.nextInt());
+        }
+        obj.display();
+        System.out.println("Enter value to be search : ");
+        obj.searchValue(sc.nextInt());
+        System.out.println("Pankaj sharma :");
+    }
+}
