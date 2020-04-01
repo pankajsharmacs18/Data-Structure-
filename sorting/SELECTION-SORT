@@ -1,0 +1,55 @@
+package selectionSort;
+
+import java.util.Scanner;
+
+class SortImle
+{
+    Scanner inp=new Scanner(System.in);
+    public void insertValue(int[] arr)
+    {
+        System.out.println("enter value to binsert : ");
+        for (int i = 0; i < arr.length ;i++)
+        {
+         arr[i]=inp.nextInt();
+        }
+        System.out.println(" All Value are inseerted : ");
+    }
+    public void display(int[] arr)
+    {
+        System.out.println("\n insert value are : \n ");
+        for (int value : arr) {
+            System.out.print(value + "  ");
+        }
+    }
+    public void selectionSort(int[] arr)
+    {
+        for (int i = 0; i <arr.length-1 ; i++)
+        {
+            int min_insex=i;
+            for (int j = i+1; j <arr.length ; j++)
+            {
+                if(arr[j]<arr[min_insex])
+                {
+                    min_insex=j;
+                }
+            }
+            int temp=arr[min_insex];
+            arr[min_insex]=arr[i];
+            arr[i]=temp;
+        }
+}
+}
+public class SelectionMain {
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        SortImle obj=new SortImle();
+        System.out.println("enter size of arrays : ");
+        int arr[]=new int[sc.nextInt()];
+        obj.insertValue(arr);
+        obj.display(arr);
+        obj.selectionSort(arr);
+        obj.display(arr);
+        System.out.println("pankaj sharma");
+    }
+}
