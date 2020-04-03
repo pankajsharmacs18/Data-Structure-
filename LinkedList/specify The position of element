@@ -1,0 +1,60 @@
+package linkedPract;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class ListImpleMent
+{
+    Node head;
+    public void insert(int value)
+    {
+        Node new_Ele=new Node(value);
+        if(head==null)
+        {
+            head=new_Ele;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=new_Ele;
+
+    }
+    public void display()
+    {
+        int i=0;
+        Node temp=head;
+        while (temp!=null)
+        {
+            System.out.println (temp.data+"  and  their position is : "+(int)i);
+            temp=temp.next;
+            i++;
+        }
+    }
+}
+public class LinkMain {
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImpleMent obj=new ListImpleMent();
+        for (int i = 0; i <10 ; i++)
+        {
+            System.out.println("enter value : ");
+        obj.insert(sc.nextInt());
+        }
+        obj.display();
+        System.out.println("pankaj sharma : ");
+    }
+}
+
