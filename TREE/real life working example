@@ -1,0 +1,139 @@
+package binaryPract;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node left,right;
+    Node(int data)
+    {
+        this.data=data;
+        left=null;
+        right=null;
+    }
+}
+class TreeImplement
+{
+    Scanner inp=new Scanner(System.in);
+    Node root;
+    public void insert()
+    {
+            System.out.println("enter value ");
+            int value = inp.nextInt();
+            Node new_val = new Node(value);
+            if (root == null)
+            {
+                root = new_val;
+                return;
+            }
+            Queue<Node> que = new LinkedList<Node>();
+            que.add(root);
+            while (!que.isEmpty())
+            {
+                Node pre = que.remove();
+                if (pre.left == null)
+                {
+                    pre.left = new_val;
+                    return;
+                } else if (pre.right == null)
+                {
+                    pre.right = new_val;
+                    return;
+                } else {
+                    que.add(pre.left);
+                    que.add(pre.right);
+                }
+            }
+        allMethode();
+    }
+    public void printInorder(Node node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        printInorder(node.left);
+        System.out.print(node.data+" ");
+        printInorder(node.right);
+    }
+    void printInorder()
+    {
+        printInorder(root);
+    }
+    public void printPOSTorder(Node node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        printPOSTorder(node.left);
+        printPOSTorder(node.right);
+        System.out.print(node.data+" ");
+    }
+    void printPOSTorder()
+    {
+        printPOSTorder(root);
+    }
+    public void printPreOrder(Node node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        System.out.print(node.data+" ");
+        printPreOrder(node.left);
+        printPreOrder(node.right);
+    }
+    void printPreOrder()
+    {
+        printPreOrder(root);
+    }
+    public void allMethode()
+    { int c=0;
+        System.out.println("Plaese choose Option \n 1 fir insert Element : \n 2 for print element in per onder : \n 3 for perint element in In order : \n 4 for print post order  ");
+        int chose=inp.nextInt();
+        if(chose==1)
+        {
+            do{
+            insert();
+                System.out.println("enter for more value : ");
+                c=inp.nextInt();
+        }while (c==1);
+            allMethode();
+        }
+        else if(chose==2)
+            {
+                System.out.println("\nvalue printed in Per Order : ");
+                printPreOrder();
+                allMethode();
+            }
+        else if(chose==3)
+        {
+            System.out.println("\n value inserted :  ");
+            printInorder();
+            allMethode();
+        }
+        else if(chose==4)
+        {
+            System.out.println("\n value printed in post order  : ");
+            printPOSTorder();
+            allMethode();
+        }
+        else
+            {
+                System.out.println("You enter wrong input \n let's try again : ");
+                allMethode();
+            }
+    }
+}
+public class BinaryMain {
+    public static void main(String... PankajSharma)
+    {
+    TreeImplement obj=new TreeImplement();
+     obj.allMethode();
+    }
+}
+
