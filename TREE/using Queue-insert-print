@@ -1,0 +1,82 @@
+package binaryPract;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    Node(int data)
+    {
+        this.data=data;
+        left=null;
+        right=null;
+    }
+}
+class TreeImple
+{
+    Node root;
+    public void insert(int value)
+    {
+        Node new_value=new Node(value);
+        if(root==null)
+        {
+            root=new_value;
+            return;
+        }
+        Queue<Node> que=new LinkedList<Node>();
+        que.add(root);
+        while (!que.isEmpty())
+        {
+            Node pre=que.remove();
+            if(pre.left==null)
+            {
+                pre.left=new_value;
+                return;
+            }
+            else if(pre.right==null)
+            {
+                pre.right=new_value;
+                return;
+            }
+            else
+                {
+                    que.add(pre.left);
+                    que.add(pre.right);
+                }
+        }
+
+    }
+    public void printInorder(Node node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        printInorder(node.left);
+        System.out.println(node.data);
+        printInorder(node.right);
+    }
+    void printInorder()
+    {
+        printInorder(root);
+    }
+}
+public class BinaryMain {
+    public static void main(String... PankajSharma)
+    {
+        TreeImple obj=new TreeImple();
+        Scanner sc=new Scanner(System.in);
+        for (int i = 0; i <=10 ; i++)
+        {
+            System.out.println("enter value : ");
+            obj.insert(sc.nextInt());
+        }
+        obj.printInorder();
+        System.out.println("pankaj sharma : ");
+    }
+}
+
