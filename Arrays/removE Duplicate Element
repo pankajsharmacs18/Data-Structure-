@@ -1,0 +1,60 @@
+package linkedPract;
+
+import java.util.Scanner;
+
+class Arrays
+{
+    int length=0;
+    Scanner sc=new Scanner(System.in);
+    public void insertValue(int[] arr)
+    {
+        length=arr.length;
+        System.out.println("enter value to inserted : ");
+        for (int i = 0; i < length; i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+    }
+    public void display(int[] arr)
+    {
+        for (int i = 0; i <length ; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+    public void removerDuplicae(int arr[])
+    {
+        for (int i = 0; i <length ; i++)
+        {
+            for (int j = i+1; j <length ; j++)
+            {
+            if(arr[i]==arr[j])
+            {
+                for (int k = j; k <length -1; k++)
+                {
+                arr[k]=arr[k+1];
+                }
+                length--;
+            }
+            }
+        }
+    }
+}
+public class LinkMain {
+
+    public static void main(String... PankajSharma)
+    {
+        Arrays obj=new Arrays();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter range  ");
+        int size=sc.nextInt();
+        int[] arr=new int[size];
+        obj.insertValue(arr);
+        obj.display(arr);
+        System.out.println("removerd element : ");
+        obj.removerDuplicae(arr);
+        obj.display(arr);
+        System.out.println("pankaj sharma : ");
+    }
+}
+
