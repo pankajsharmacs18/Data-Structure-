@@ -1,0 +1,70 @@
+package QueuePriority;
+
+import java.util.Scanner;
+
+class Element
+{
+    int data;
+    int priority;
+    Element(int data, int pri)
+    {
+        this.data=data;
+        this.priority=pri;
+    }
+}
+class QueueImple
+{
+    Element arr[];
+    int rear=-1;
+    int front=-1;
+    QueueImple(int size)
+    {
+        arr=new Element[size];
+        rear=0;
+        front=0;
+
+    }
+    public void insert(int value,int pri)
+    {
+        if(rear==arr.length+1)
+        {
+            System.out.println("Arrays is full ,can't insert append more vlaue  : ");
+            return;
+        }
+        Element new_value=new Element(value,pri);
+        arr[rear]=new_value;
+        rear++;
+    }
+    public void display()
+    {
+        if(rear==0)
+        {
+            System.out.println("Arrays is empty : ");
+            return;
+        }
+        for (int i = 0; i <rear; i++)
+        {
+            System.out.println(arr[i].data+"  "+arr[i].priority);
+        }
+    }
+}
+public class PriorityMian {
+
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println(" Enter Size of arrays :  ");
+        int size =sc.nextInt();
+        QueueImple obj=new QueueImple(size);
+        for (int i = 0; i <size ; i++)
+        {
+            System.out.println("enter value to be insert : ");
+            int value=sc.nextInt();
+            System.out.println("Enter priority of value : ");
+            int pri=sc.nextInt();
+            obj.insert(value,pri);
+        }
+        obj.display();
+        System.out.println("pankaj sharma : ");
+    }
+}
