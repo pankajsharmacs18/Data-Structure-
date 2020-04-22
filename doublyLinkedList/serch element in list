@@ -1,0 +1,93 @@
+package DoublyList;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    Node pre;
+    Node(int data)
+    {
+        this.data=data;
+        next=null;
+        pre=null;
+    }
+}
+
+
+class ListImpleMent
+{
+
+Node head;
+public void insertNodes(int value)
+{
+    Node newValue=new Node(value);
+    if(head==null)
+    {
+        head=newValue;
+        head.pre=null;
+        head.next=null;
+        return;
+    }
+    Node temp=head;
+    while (temp.next!=null)
+    {
+        temp=temp.next;
+    }
+    temp.next=newValue;
+    newValue.pre=temp;
+}
+public void display()
+{
+    Node temp=head;
+    if(head==null)
+    {
+        System.out.println("List is Empty  :\n can't display anything : ");
+        return;
+    }
+    while (temp!=null)
+    {
+        System.out.print(temp.data+"  ");
+        temp=temp.next;
+    }
+}
+
+public void serchElement(int value)
+{
+    
+    Node temp=head;
+    while (temp!=null)
+    {
+        if(temp.data==value)
+        {
+            System.out.println(value+"present in list : ");
+            return;
+        }
+        temp=temp.next;
+    }
+    System.out.println("not present");
+    
+}
+
+}
+public class ListMain {
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        int chose=0;
+        ListImpleMent obj=new ListImpleMent();
+        do {
+            System.out.println("Enter value to be insert : ");
+            int n=sc.nextInt();
+            obj.insertNodes(n);
+            System.out.println("enter 1 dor more value  : ");
+            chose=sc.nextInt();
+        }while (chose==1);
+        obj.display();
+        System.out.println("enter value jto be search  : ");
+        obj.serchElement(sc.nextInt());
+       
+        System.out.println("PANKAJ SHARMA : ");
+    }
+}
