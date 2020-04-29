@@ -1,0 +1,105 @@
+package queueImplement;
+
+import java.util.Scanner;
+
+class Element
+{
+    int pri;
+    int value;
+    Element(int value,int pri)
+    {
+        this.pri=pri;
+        this.value=value;
+    }
+    public int getValue()
+    {
+        return value;
+    }
+    public void setValue(int value)
+    {
+        this.value=value;
+    }
+    public void setPri(int pri)
+    {
+        this.pri=pri;
+    }
+    public int getPri()
+    {
+        return pri;
+    }
+
+}
+class QueueImplement
+{
+    Element arr[];
+    int rear=0;
+    int front=0;
+
+    QueueImplement(int size)
+    {
+        arr=new Element[size];
+    }
+
+    public void insertValue(int value ,int pri)
+    {
+        int i=0;
+        Element newVal=new Element(value,pri);
+        if(rear==arr.length)
+        {
+            System.out.println("Arrays is full : ");
+            return;
+        }
+        else if(rear==0)
+        {
+        arr[rear]=newVal;
+        rear++;
+        }
+        else
+            {
+                for ( i =rear-1 ; i >=front ; i--)
+                {
+                    if(newVal.pri<arr[i].pri)
+                    {
+                        arr[i+1]=arr[i];
+                    }
+                    else
+                        {
+                            break;
+                        }
+                }
+                arr[i+1]=newVal;
+                rear++;
+            }
+    }
+    public void display()
+    {
+        if(rear==0)
+        {
+            System.out.println(" Arrays is empty  : ");
+            return;
+        }
+        for (int j = 0; j <arr.length ; j++)
+        {
+            System.out.println(arr[j].value+"  "+arr[j].pri);
+        }
+    }
+}
+public class QueueIMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter size of arrays  : ");
+        int size=sc.nextInt();
+        QueueImplement obj=new QueueImplement(size);
+        for (int i = 0; i <size ; i++) {
+            System.out.println("Enter valeu to be insert  : ");
+            int value = sc.nextInt();
+            System.out.println("Enter pritorty pf value : ");
+            int pri = sc.nextInt();
+            obj.insertValue(value, pri);
+        }
+        obj.display();
+        System.out.println("PANKAJ SHARMA : ");
+    }
+}
