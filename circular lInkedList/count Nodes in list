@@ -1,0 +1,60 @@
+package circularList;
+
+import java.util.Scanner;
+
+class Node
+{
+    Node next;
+    int data;
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+class ListImplement
+{
+    Node head=null;
+    Node tail=null;
+    public void insertValue(int value)
+    {
+        Node newVal=new Node(value);
+        if(head==null)
+        {
+            head=newVal;
+            tail=newVal;
+            tail.next=head;
+
+        }
+        tail.next=newVal;
+        tail=newVal;
+        tail.next=head;
+    }
+    public void  display()
+    { int count=0;
+        Node temp=head;
+        while (temp!=tail)
+        {count++;
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println(temp.data+"\n totsl no of Nodes is : "+ (count +1));
+    }
+}
+public class CircularMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImplement obj=new ListImplement();
+        int chose=0;
+        do
+            {
+                System.out.println("Enter value to be insert : ");
+                obj.insertValue(sc.nextInt());
+                System.out.println("Enter 1 for more value : ");
+                chose=sc.nextInt();
+            }while (chose==1);
+        obj.display();
+        System.out.println("Pankaj Sharma : ");
+    }
+}
