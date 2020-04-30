@@ -1,0 +1,55 @@
+package circularList;
+class Node
+{
+    Node next;
+    int data;
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+class ListImplement
+{
+    Node head=null;
+    Node tail=null;
+    public void insertValue(int value)
+    {
+        Node newVal=new Node(value);
+        if(head==null)
+        {
+            head=newVal;
+            tail=newVal;
+            tail.next=head;
+
+        }
+        tail.next=newVal;
+        tail=newVal;
+        tail.next=head;
+    }
+    public void  display()
+    {
+        Node temp=head;
+        while (temp!=tail)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println(temp.data);
+    }
+}
+public class CircularMain
+{
+    public static void main(String... PankajSharma)
+    {
+        ListImplement obj=new ListImplement();
+        obj.insertValue(1);
+        obj.insertValue(2);
+        obj.insertValue(6);
+        obj.insertValue(4);
+        obj.insertValue(7);
+        obj.insertValue(8);
+        obj.insertValue(8);
+        obj.display();
+        System.out.println("Pankaj Sharma : ");
+    }
+}
