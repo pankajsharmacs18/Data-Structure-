@@ -1,0 +1,89 @@
+0 
+package newTree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node right;
+    Node left;
+    Node(int data)
+    {
+        this.data=data;
+        left=null;
+        right=null;
+    }
+
+}
+class TreeImple
+{
+    int count=0;
+    Node root;
+    public void insertVal(int value)
+    {
+        Node newVal=new Node(value);
+        if(root==null)
+        {
+            root=newVal;
+            return;
+        }
+        Queue<Node> que=new LinkedList<Node>();
+        que.add(root);
+        while (!que.isEmpty())
+        {
+            Node pre=que.remove();
+            if(pre.left==null)
+            {
+                pre.left=newVal;
+                return;
+            }
+            else if(pre.right==null)
+            {
+                pre.right=newVal;
+                return;
+            }
+            else
+                {
+                    que.add(pre.left);
+                    que.add(pre.right);
+                }
+        }
+    }
+    public void printInOrder(Node node)
+    {
+        if(node==null)
+        {
+            System.out.println("\n toral level is "+count);
+            return;
+        }
+        printInOrder(node.left);
+        count++;
+        System.out.print(node.data+" ");
+        printInOrder(node.right);
+    }
+    void printInOrder()
+    {
+        printInOrder(root);
+    }
+}
+public class TreeeMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        TreeImple obj=new TreeImple();
+        int chose=0;
+        do {
+            System.out.println("eter value to be insert ");
+            obj.insertVal(sc.nextInt());
+            System.out.println("ENTR 1 for more value : ");
+            chose=sc.nextInt();
+        }while (chose==1);
+        obj.printInOrder();
+
+        System.out.println("Pankaj Sharma : ");
+    }
+}
