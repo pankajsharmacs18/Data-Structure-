@@ -1,0 +1,77 @@
+package BinarySearchTree;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    Node(int data)
+    {
+        this.data=data;
+        left=null;
+        right=null;
+    }
+}
+class BSTimplement
+{
+    Node root;
+    public void isertVale(int value)
+    {
+        root=insertRec(root,value);
+    }
+
+public Node insertRec(Node root,int value)
+{
+    if(root==null)
+    {
+        root =    new Node(value);
+
+        return root;
+    }
+    if(value<root.data)
+    {
+        System.out.println("value inserted at left side of "+ root.data);
+     root.left=   insertRec(root.left,value);
+    }
+    else
+        {
+            System.out.println("Value inserted at right side of  "+root.data);
+            root.right=insertRec(root.right,value);
+        }
+return root;
+}
+public void printInOrder(Node node)
+{
+    if(node==null)
+    {
+        return;
+    }
+    printInOrder(node.left);
+    System.out.print(node.data+" ");
+    printInOrder(node.right);
+}
+void printInOrder()
+{
+    printInOrder(root);
+}
+}
+public class BSTmain
+{
+    public static void main(String... PankajSharma)
+    {
+
+        Scanner sc=new Scanner(System.in);
+        BSTimplement obj=new BSTimplement();
+        int chose=0;
+        do {
+            System.out.println("Enter value to be inserted : ");
+            obj.isertVale(sc.nextInt());
+            System.out.println("Enter 1 for more value : ");
+            chose=sc.nextInt();
+        }while (chose==1);
+        obj.printInOrder();
+        System.out.println("Pankaj Sharma :");
+    }
+}
