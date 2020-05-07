@@ -1,0 +1,158 @@
+package BStoBST;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    public Node(int data)
+    {
+        this.data=data;
+        left=null;
+        right=null;
+    }
+}
+class BStoBSTimple
+{
+    int[] arr;
+    Node root;
+    public void insert(int value)
+    {
+        Node newVal=new Node(value);
+        if(root==null)
+        {
+            root=newVal;
+            return;
+        }
+        Queue<Node> que=new LinkedList<Node>();
+        que.add(root);
+        while (!que.isEmpty())
+        {
+            Node pre=que.remove();
+            if(pre.left==null)
+            {
+                pre.left=newVal;
+                return;
+            }
+            else if(pre.right==null)
+            {
+                pre.right=newVal;
+                return;
+            }
+            else
+                {
+                    que.add(pre.left);
+                    que.add(pre.right);
+                }
+        }
+    }
+    public void displayIn(Node node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        displayIn(node.left);
+        System.out.print(node.data+ " ");
+        displayIn(node.right);
+    }
+    public void displayBT()
+    {
+        displayIn(root);
+    }
+    int size=0;
+    public void countSize(Node node)
+    {
+        if(node==null)
+        {return;}
+        countSize(node.left);
+        size++;
+        countSize(node.right);
+    }
+    public int size()
+    { size=0;
+        countSize(root);
+        System.out.println("\n Total size is  : "+size);
+        return size;
+    }
+    int i=0;
+public void btToArrays(Node node,int[] arr)
+{
+    if(node==null)
+    {
+        return;
+    }
+    btToArrays(node.left,arr);
+    arr[i]=node.data;
+    i++;
+    btToArrays(node.right,arr);
+}
+public void arrayBT()
+{
+    arr=new int[size()];  // create arrasy of size of binary treeee :
+    btToArrays(root,arr);
+}
+public void displayArrays()
+{
+    for (int j = 0; j <arr.length ; j++)
+    {
+        System.out.print(arr[j]+" ");
+    }
+}
+public void converBSt()
+{ root=null;
+    for (int j = 0; j <arr.length ; j++)
+    {
+    root=bsTObst(root,arr[j]);
+    }
+}
+public Node bsTObst(Node root,int value)
+{
+
+    if(root==null)
+    {
+        root=new Node(value);
+        return root;
+    }
+    if(value<root.data)
+    {
+        root.left=bsTObst(root.left,value);
+    }
+    if(root.data<value)
+    {
+        root.right=bsTObst(root.right,value);
+    }
+    return root;
+}
+}
+public class BsToBstMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        BStoBSTimple obj=new BStoBSTimple();
+        obj.insert(1);
+        obj.insert(2);
+        obj.insert(3);
+        obj.insert(4);
+        obj.insert(5);
+        obj.insert(6);
+        obj.insert(7);
+        obj.insert(8);
+        obj.insert(9);
+        obj.insert(10);
+        obj.displayBT();
+        obj.size();
+        obj.arrayBT();
+        System.out.println("\n created arrasy is  :");
+        obj.displayArrays();
+        obj.converBSt();
+        System.out.println(" \nBST IS  :");
+        obj.displayBT();
+        System.out.println("\n@ Pankaj sharma :");
+    }
+}
