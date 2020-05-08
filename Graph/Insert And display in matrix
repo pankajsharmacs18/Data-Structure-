@@ -1,0 +1,48 @@
+package graphPra;
+
+import java.util.Scanner;
+class GraphImpl
+{
+    Scanner sc=new Scanner(System.in);
+    public void inertCon(String[][] grp,int ver,int con)
+    {
+        for (int i = 0; i <ver ; i++)
+        {
+            System.out.println("Enter name of vertics  : ");
+            grp[0][i]=sc.nextLine();
+            System.out.println("enter name vertics to be connected with  "+grp[0][i]);
+            for (int j = 1; j <con ; j++)
+            {
+                grp[j][i]=sc.nextLine();
+            }
+        }
+    }
+    public void displayGraph(String[][] grp,int ver,int con)
+    {
+        System.out.println("Matrix graph is : ");
+        for (int i = 0; i <ver ; i++)
+        {
+            for (int j = 0; j <con ; j++)
+            {
+                System.out.print(grp[i][j]+"   ");
+            }
+            System.out.println();
+        }
+    }
+}
+public class GraphMain
+{
+    public static void main(String... PankajSharma)
+    {
+        GraphImpl obj=new GraphImpl();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter Total number of Vertics  :");
+        int ver=sc.nextInt();
+        int con=ver;// insimple graph max number connected to vrstics   is n-1 , n=numver of vertics  :
+        String[][] grp=new String[ver][con];
+        obj.inertCon(grp,ver,con);
+        obj.displayGraph(grp,ver,con);
+        System.out.println("Pankaj Sharma : ");
+    }
+
+}
