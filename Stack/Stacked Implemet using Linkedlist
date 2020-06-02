@@ -1,0 +1,117 @@
+package StackMain;
+
+import java.util.Scanner;
+
+class Node
+{
+    Node next;
+    int data;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class StackiImplement
+{
+    Scanner sc=new Scanner(System.in);
+    Node front;
+    Node tail;
+    public void isert(int data)
+    {
+        Node newVal=new Node(data);
+        if(front==null)
+        {
+            front=newVal;
+            tail=newVal;
+            return;
+        }
+        Node temp=front;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=newVal;
+        tail=newVal;
+    }
+    public void displayFUll()
+    {
+        if(front==null)
+        {
+            System.out.println("sTACK IS eMPTY : ");
+            return;
+        }
+        Node temp=front;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+ " ");
+            temp=temp.next;
+        }
+    }
+    public void findLast()
+    {
+        if(front==null)
+        {
+            System.out.println("Can't find Last VALUE : ");
+            return;
+        }
+        Node last=front;
+        while (last.next!=null)
+        {
+         last=last.next;
+        }
+        System.out.println("Last Value is "+last.data);
+    }
+    public void popVal()
+    {
+        if(front==null)
+        {
+            System.out.println("Can't Pop value ");
+            return;
+        }
+        Node temp=front;
+        while (temp.next.next!=null)
+        {
+            temp=temp.next;
+        }
+        System.out.println(temp.next.data+"  IS pOPED ");
+        temp=temp.next;
+    }
+    public void driver()
+    {
+        int chose=0;
+        System.out.println("Please choose option  : ");
+        System.out.println("1 : For insert Value  : \n 2 : For dispkt complete Stack \n 3 : Find Last  \n 4 : POP ELEMENT ");
+        switch (sc.nextInt())
+        {
+            case 1:
+                int c=0;
+                do {
+                    System.out.println("Enter value to be inserted :");
+                    isert(sc.nextInt());
+                    System.out.println("Enter 1 for more value :  ");
+                    c=sc.nextInt();
+                }while (c==1);
+                driver();
+            case 2:
+                displayFUll();
+                driver();
+            case 3:
+                findLast();
+                driver();
+            case 4:
+                popVal();
+                driver();
+        }
+
+    }
+}
+public class SatackMain
+{
+    public static void main(String... PankajSharma)
+    {
+        StackiImplement obj=new StackiImplement();
+        obj.driver();
+        System.out.println("Pankaj SHARMA");
+    }
+}
