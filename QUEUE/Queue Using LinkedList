@@ -1,0 +1,118 @@
+package listPract;
+import java.util.Scanner;
+
+class Node
+{
+    Node next;
+    int data;
+    public  Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class ListImple
+{
+    Scanner sc=new Scanner(System.in);
+    Node front;
+    Node tail;
+    public void insertVal(int value)
+    {
+        Node newVal=new Node(value);
+
+        if(front==null)
+        {
+            front=newVal;
+            tail=newVal;
+            return;
+        }
+        Node temp=front;
+        while(temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=newVal;
+
+    }
+    public void displayFull()
+    {
+        if(front==null)
+        {
+            System.out.println("Stack is Empty   :");
+            return;
+        }
+        Node temp=front;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+"  ");
+            temp=temp.next;
+        }
+    }
+    public void popValue()
+    {
+        if(front==null)
+        {
+            System.out.println("Stack is Empty  :");
+            return;
+        }
+        System.out.println(front.data+"\n");
+        front=front.next;
+    }
+    public void peekValue()
+    {
+        Node temp=front;
+        if(front == null)
+        {
+            System.out.println("Can't display Stack is Empty   : ");
+            return;
+        }
+
+        System.out.println(temp.data);
+    }
+    public void dreiver()
+    {
+        System.out.println("Please Choose Opration Option  ");
+        System.out.println("\n 1 : For insert Value in stack \n 2 : For display Full Stack \n 3 : For PoP Element \n 4: For peek element ");
+        switch (sc.nextInt())
+        {
+            case 1:
+                int c;
+                do {
+                    System.out.println("Enter value to push in stack  :");
+                    insertVal(sc.nextInt());
+                    System.out.println("Enter 1 for more value  : ");
+                    c=sc.nextInt();
+                }while (c==1);
+                dreiver();
+                break;
+            case 2:
+                displayFull();
+                dreiver();
+            case 3:
+                do {
+                        popValue();
+                        System.out.println("enter 1 for more value : ");
+                        c=sc.nextInt();
+                    }while (c==1);
+                        dreiver();
+            case 4:
+                    peekValue();
+                    dreiver();
+            default:
+                    System.out.println("you Choose Wrong Option \n please retry  :");
+                    dreiver();
+        }
+
+    }
+}
+
+public class ListMain
+{
+    public static void main(String...PankajSharma)
+    {
+        ListImple obj=new ListImple();
+        obj.dreiver();
+        System.out.println("PankajSharma");
+
+    }
+}
