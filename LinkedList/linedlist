@@ -1,0 +1,64 @@
+package linkList;
+
+import java.util.Scanner;
+
+class Node
+{
+int data;
+Node next;
+public  Node(int data)
+{
+    this.data=data;
+    next=null;
+}
+
+}
+class  ListImple
+{
+    Node head;
+    public void insert(int value)
+    {
+        Node newVal=new Node(value);
+        if(head==null)
+        {
+            head=newVal;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=newVal;
+    }
+    public void display() {
+        if (head == null) {
+            System.out.println("List is Empty : ");
+            return;
+        }
+        Node temp = head;
+        while (temp != null)
+        {
+            System.out.print(temp.data + " ");
+            temp=temp.next;
+        }
+    }
+    
+}
+public class LinkedMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImple obj=new ListImple();
+        int c=0;
+        do {
+            System.out.println("Enter value to inseerted  :");
+            obj.insert(sc.nextInt());
+            System.out.println("Enter 1 for value :  ");
+            c=sc.nextInt();
+        }while (c==1);
+        obj.display();
+        System.out.println("Pankaj Sharma  : ");
+    }
+}
