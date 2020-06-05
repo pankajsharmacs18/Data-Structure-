@@ -1,0 +1,66 @@
+package arrPract;
+
+import java.util.Scanner;
+
+class ArrayImplement
+{
+    Scanner sc=new Scanner(System.in);
+    public void insertValue(int[] arr)
+        {
+            System.out.println("Enter element in arrays : ");
+            for (int i = 0; i <arr.length ; i++)
+            {
+            arr[i]=sc.nextInt();
+            }
+        }
+        public void display(int[] arr)
+        {
+            System.out.println("Emterd array is : \n ");
+            for (int i = 0; i <arr.length ; i++)
+            {
+                System.out.print(arr[i]+"  ");
+            }
+        }
+        public void countFreq(int[] arr)
+        {
+            int visited=-1;
+            int freq[]=new int[arr.length];
+            for (int i = 0; i <arr.length ; i++)
+            {
+                int count=1;
+
+                for (int j = i+1; j <arr.length ; j++)
+                {
+                    if(arr[i]==arr[j]){
+                count++;
+                freq[j]=visited;
+                }
+                }
+                if(freq[i]!=visited)
+                {
+                    freq[i]=count;
+                }
+            }
+            for (int i = 0; i < arr.length; i++)
+            {
+                if(freq[i]!=visited)
+                {
+                    System.out.println(arr[i]+"   "+freq[i]);
+                }
+            }
+        }
+}
+public class ArrayMain
+{
+    public static void main(String... PankajSharma)
+    {
+        ArrayImplement obj=new ArrayImplement();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter size of arrasy  : ");
+        int arr[]=new int[sc.nextInt()];
+        obj.insertValue(arr);
+        obj.display(arr);
+        obj.countFreq(arr);
+        System.out.println("Pankaj Sharma");
+    }
+}
