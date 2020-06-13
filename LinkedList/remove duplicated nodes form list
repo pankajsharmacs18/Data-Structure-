@@ -1,0 +1,97 @@
+package palindrom;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class ListImplement
+{
+    Node head;
+    public void insert(int value)
+    {
+        Node newValue=new Node(value);
+        if(head==null)
+        {
+
+            head=newValue;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=newValue;
+
+    }
+    public void display()
+    {
+        if(head==null)
+        {
+            System.out.println("Can't display  movie  : ");
+            return;
+        }
+        Node temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    public void removeRepeatedNodes()
+        {
+            if(head==null)
+            {
+                System.out.println("Linked list Empty : ");
+                return;
+            }
+            Node temp=head;
+            while (temp!=null)
+            {
+                Node lst=temp;
+                Node temp1=temp.next;
+                while (temp1!=null)
+                {
+                    if(temp.data==temp1.data)
+                    {
+                        lst.next=temp1.next;
+                    }
+                    else
+                        {
+                            lst=temp1;
+                        }
+                    temp1=temp1.next;
+                }
+                temp=temp.next;
+            }
+        }
+}
+public class PalindromeMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImplement obj=new ListImplement();
+        int chose=0;
+        do {
+            System.out.println("Enter value to be inserted ");
+            obj.insert(sc.nextInt());
+            System.out.println("Enter 1 for more value ");
+            chose=sc.nextInt();
+        }while (chose==1);
+        obj.display();
+        obj.removeRepeatedNodes();
+        System.out.println("\n After Remove repeated Nodes");
+        obj.display();
+
+        System.out.println("Pankaj sharma : ");
+    }
+}
