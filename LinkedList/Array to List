@@ -1,0 +1,85 @@
+package arrayToList;
+
+import org.omg.CORBA.NO_IMPLEMENT;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+
+
+class ArraysToListConvert
+{
+
+
+    Node head;
+    Node temp;
+    public void lstConvert(int arr[])
+    {
+        for (int i = 0; i <arr.length ; i++)
+        {
+        insertValue(arr[i]);
+        }
+    }
+    public void insertValue(int value)
+    {
+        Node newVal=new Node(value);
+        if (head==null)
+        {
+            head=newVal;
+            temp=newVal;
+            System.out.println("\n + 1");
+            return;
+        }
+        temp.next=newVal;
+        temp=newVal;
+    }
+    public void lstDisplay(int[] arr)
+    {
+        if(head==null)
+        {
+            System.out.println("Can't display anything ");
+            return;
+        }
+        Node t=head;
+        while (t!=null)
+        {
+            System.out.print(t.data+" ");
+            t=t.next;
+        }
+    }
+}
+public class ArrayToList
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enetr size of arrays :");
+        int size=sc.nextInt();
+       int arr[]=new int[size];
+        ArraysToListConvert arrtolst=new ArraysToListConvert();
+        System.out.println("Enter "+size+" Element in arrays ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+        arr[i]=sc.nextInt();
+        }
+        System.out.println("\n Enterd arrays is ");
+        for (int i = 0; i <size ; i++)
+        {
+            System.out.print(arr[i]+ " ");
+        }
+        arrtolst.lstConvert(arr);
+        System.out.println("\n List is ");
+        arrtolst.lstDisplay(arr);
+        System.out.println("Pankaj Sharma  : ");
+
+    }
+}
