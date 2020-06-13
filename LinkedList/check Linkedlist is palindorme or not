@@ -1,0 +1,143 @@
+package palindrom;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class ListImplement
+{
+    int arr[];
+    int size=0;
+    Node head;
+    public void insert(int value)
+    {
+        Node newValue=new Node(value);
+        if(head==null)
+        {
+            size++;
+            head=newValue;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=newValue;
+        size++;
+    }
+    public void display()
+    {
+        if(head==null)
+        {
+            System.out.println("Can't display  movie  : ");
+            return;
+        }
+        Node temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    public void createArray()
+    {
+        if(head==null)
+        {
+            System.out.println("Can't create arrasy ");
+            return;
+        }
+        int i=0;
+         arr=new int[size];
+        Node temp=head;
+        while (temp!=null)
+        {
+            arr[i]=temp.data;
+            temp=temp.next;
+            i++;
+        }
+        System.out.println("\n arrays is ");
+        for (int j=0;j<arr.length;j++)
+        {
+            System.out.print(arr[j]+"  ");
+        }
+    }
+    public void reverseList()
+    {
+        if (head==null)
+        {
+            System.out.println("Can't reverse list ");
+
+            return;
+        }
+        Node curr=head;
+        Node next=null;
+        Node pre=null;
+        while (curr!=null)
+        {
+            next=curr.next;
+            curr.next=pre;
+            pre=curr;
+            curr=next;
+        }
+        head=pre;
+    }
+    public void checkPalindrome()
+    {
+        if(head==null||size==0)
+        {
+            System.out.println("Anyone is empty  :");
+            return;
+        }
+        int i=0;
+        Node temp=head;
+        boolean flag=true;
+        while (temp!=null&&i<size)
+        {
+            if(arr[i]!=temp.data)
+            {
+                flag=false;
+            }
+            temp=temp.next;
+            i++;
+        }
+        if(flag)
+        {
+            System.out.println("\nLinked list is palidrome ");
+        }
+        else
+            {
+                System.out.println("\nLinked list not palindrome  : ");
+            }
+    }
+}
+public class PalindromeMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImplement obj=new ListImplement();
+        int chose=0;
+        do {
+            System.out.println("Enter value to be inserted ");
+            obj.insert(sc.nextInt());
+            System.out.println("Enter 1 for more value ");
+            chose=sc.nextInt();
+        }while (chose==1);
+        obj.display();
+        obj.createArray();
+        obj.reverseList();
+        System.out.println("\n reverse list is ");
+        obj.display();
+        obj.checkPalindrome();
+        System.out.println("Pankaj sharma : ");
+    }
+}
