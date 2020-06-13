@@ -1,0 +1,63 @@
+package linkedList;
+
+import java.util.Scanner;
+
+class Node
+{
+    Node next;
+    int data;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class LinkedListImplement
+{
+    Node head;
+    Node temp;
+    public void inserValue(int value)
+    {
+        Node newVal=new Node(value);
+        if (head==null)
+        {
+            head=newVal;
+             temp=head;
+            return;
+        }
+        temp.next=newVal;
+        temp=newVal;
+    }
+    public void display()
+    {
+        if (head==null)
+        {
+            System.out.println("List Is Empty So can't display anything . ");
+            return;
+        }
+        Node temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+"  ");
+            temp=temp.next;
+        }
+    }
+}
+public class LinkedListMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        LinkedListImplement obj=new LinkedListImplement();
+        int chose=0;
+        do {
+            System.out.println("Enter valeu to be inserted : ");
+            obj.inserValue(sc.nextInt());
+            System.out.println("Enter 1 for more value : ");
+            chose=sc.nextInt();
+        }while (chose==1);
+        System.out.println("\nEnterd LinkedList is ");
+        obj.display();
+        System.out.println("Pankaj Sharma");
+    }
+}
