@@ -1,0 +1,92 @@
+package doublyLinkedList;
+
+import javafx.scene.transform.Scale;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    Node pre;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+        pre=null;
+    }
+}
+class ListImplement
+{
+    Node head;
+    public void insertValue(int value)
+    {
+        Node newVal=new Node(value);
+        if(head==null)
+        {newVal.pre=null;
+            head=newVal;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=newVal;
+        newVal.pre=temp;
+    }
+    public void disForward()
+    {
+        if (head==null)
+        {
+            System.out.println("Can't display anything : ");
+            return;
+        }
+        Node temp=head;
+        while (temp!=null)
+
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    public void disBackWord()
+    {
+        Node last=head;
+
+        if(head==null)
+        {
+            System.out.println("Can't display anything  : ");
+            return;
+        }
+        while (last.next!=null)
+        {
+            last=last.next;
+        }
+        while (last!=null)
+        {
+            System.out.print(last.data+"  ");
+            last=last.pre;
+        }
+    }
+}
+public class DoublyMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImplement obj=new ListImplement();
+        int count=0;
+        do {
+            System.out.println("Enter value to be insert : ");
+            obj.insertValue(sc.nextInt());
+            System.out.println("Enter 1 for more value   ");
+            count=sc.nextInt();
+        }while (count==1);
+        System.out.println("Entered List is : ");
+        obj.disForward();
+        System.out.println("\n reverse of list is  : ");
+        obj.disBackWord();
+        System.out.println("Pankaj Sharma :  ");
+    }
+}
