@@ -1,0 +1,57 @@
+package mergesort;
+
+import java.util.Scanner;
+
+class ShellImplement
+{
+    Scanner sc=new Scanner(System.in);
+    public void insertArrays(int[] arr)
+    {
+        System.out.println("Enter value in arrasy  :");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+    }
+    public void display(int[] arr)
+    {
+        System.out.println("Arrays is :\n");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+    public void Sorting(int[] arr)
+    {
+
+        for (int gap = arr.length/2; gap >0 ; gap/=2)
+        {
+
+            for (int i = gap; i <arr.length; i++)
+            {
+                int j;
+            int temp = arr[i];
+                for (j = i; j>=gap&&arr[j-gap]>temp  ; j=j-gap)
+                {
+                    arr[j]=arr[j-gap];
+                }
+                arr[j]=temp;
+            }
+        }
+    }
+}
+public class ShellSort
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Pankaj sharma ");
+        System.out.println("Enter size of arrasy : ");
+        int[] arr=new int[sc.nextInt()];
+        ShellImplement obj=new ShellImplement();
+        obj.insertArrays(arr);
+        obj.display(arr);
+        obj.Sorting(arr);
+        obj.display(arr);
+    }
+}
