@@ -1,0 +1,95 @@
+package doublyLinkedList;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node pre;
+    Node next;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+        pre=null;
+    }
+
+}
+class LIstImplememt
+{
+    Node head;
+    public void push(int data)
+    {
+        Node newVal=new Node(data);
+        if(head==null)
+        {
+        head=newVal;
+        head.pre=newVal;
+        return;
+        }
+        head.pre=newVal;
+        newVal.next=head;
+        head=newVal;
+    }
+    public void append(int data)
+    {
+        Node newVal=new Node(data);
+        if(head==null)
+        {
+          head=newVal;
+          head.pre=null;
+          return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        newVal.pre=temp;
+        temp.next=newVal;
+        newVal.next=null;
+
+    }
+
+    public void displayForward()
+    {
+        Node temp;
+        if(head==null)
+        {
+            System.out.println("Can't display anything ! ");
+            return;
+        }
+        temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println("Reverse linkedlist is \n ");
+        while (temp.pre!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.pre;
+        }
+    }
+
+}
+public class ListMain
+{
+    public static void main(String... PankajSharma)
+    {
+        LIstImplememt obj=new LIstImplememt();
+        Scanner sc=new Scanner(System.in);
+        int c=0;
+        do {
+            System.out.println("Enter value to inserted !");
+            obj.push(sc.nextInt());
+            System.out.println("Enter 1 for more value !");
+            c=sc.nextInt();
+        }while (c==1);
+        System.out.println("Enter value to be append ");
+        obj.append(sc.nextInt());
+        obj.displayForward();
+        System.out.println("Pankaj Sharma : ");
+    }
+}
