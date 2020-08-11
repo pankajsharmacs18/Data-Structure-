@@ -1,0 +1,187 @@
+071086package doublyLinkedLis;
+
+import java.util.Scanner;
+
+class Nodes
+{
+    int data;
+    Nodes next;
+    Nodes pre;
+    public Nodes(int data)
+    {
+        this.data=data;
+        next=null;
+        pre=null;
+    }
+}
+class ListImplement
+{
+    Scanner sc=new Scanner(System.in);
+    Nodes head;
+    public void push(int data)
+    {
+        Nodes newVal=new Nodes(data);
+        if(head==null)
+        {
+            head=newVal;
+            head.pre=null;
+            head.next=null;
+            return;
+        }
+        newVal.next=head;
+        head.pre=newVal;
+        head=newVal;
+    }
+    public void append(int data)
+    {
+   Nodes newVal=new Nodes(data);
+   if(head==null)
+   {
+       head=newVal;
+       head.pre=null;
+       head.next=null;
+   }
+   Nodes temp=head;
+   while (temp.next!=null)
+   {
+       temp=temp.next;
+   }
+   newVal.next=null;
+   newVal.pre=temp;
+   temp.next=newVal;
+    }
+    public int sizeCal()
+    {
+        int size=0;
+        if(head==null)
+        {
+            System.out.println("can't return anything !");
+            size=0;
+            return size;
+        }
+        Nodes temp=head;
+        while (temp.next!=null)
+        {
+            size++;
+            temp=temp.next;
+        }
+        return size;
+    }
+    public void insertAtPosition(int pos,int data)
+    {
+        int size=sizeCal();
+        Nodes newVal=new Nodes(data);
+        if(pos>size|| head==null)
+        {
+            System.out.println("Something is Wrong!");
+            return;
+        }
+        Nodes temp=head;
+        int i=0;
+        while (temp.next!=null&&i<pos)
+        {
+            temp=temp.next;
+            i++;
+        }
+        newVal.next=temp.next;
+        newVal.pre=temp;
+        temp.next=newVal;
+    }
+    public void displayForward()
+    {
+
+        if (head==null)
+        {
+            System.out.println("Can't displat anything : ");
+            return;
+        }
+        System.out.println("Fprward didplay is : ");
+        Nodes temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    public void displayReverse()
+    {
+        Nodes temp=head;
+        if(head==null)
+        {
+            System.out.println("can't display anything ! ");
+            return;
+        }
+        System.out.println("Reverse display is : ");
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.pre;
+        }
+    }
+    public void driverFun()
+    {
+
+        int chose=0;
+        System.out.println("Please choose suitable Option :\n 1 : Push Value \n 2 : Append Value :\n 3 : Display Forward \n 4: Display Reverse " +
+                "\n 5 : Calculate size ");
+        chose=sc.nextInt();
+        if(chose==1)
+        {
+            int c=0;
+            do {
+                System.out.println("Enter value to be pushed : ");
+                push(sc.nextInt());
+                System.out.println("Enter 1 for more acceptance :");
+                c=sc.nextInt();
+            }while (c==1);
+            driverFun();
+        }
+        else if(chose==2)
+        {
+            int c=0;
+            do {
+                System.out.println("Enter value to be Append  : ");
+                push(sc.nextInt());
+                System.out.println("Enter 1 for more acceptance :");
+                c=sc.nextInt();
+            }while (c==1);
+            driverFun();
+        }
+        else if(chose==3)
+        {
+            displayForward();
+            driverFun();
+        }
+        else if(chose==4)
+        {
+        displayReverse();
+        driverFun();
+        }
+        else if(chose==5)
+        {
+            System.out.println("Size of linkedlist  : "+sizeCal());
+            driverFun();
+        }
+        else
+            {
+                System.out.println("You Choose Wrong option ! Please try again : ");
+                driverFun();
+            }
+
+    }
+
+}
+public class DoublyMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImplement obj=new ListImplement();
+      obj.driverFun();
+        System.out.println("Pankaj Sharma :");
+    }
+}
