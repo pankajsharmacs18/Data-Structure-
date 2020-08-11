@@ -1,0 +1,92 @@
+package doublylinkedlist;
+
+import java.util.Scanner;
+
+class Nodes
+{
+    int data;
+    Nodes next;
+    Nodes pre;
+    public Nodes(int data)
+    {
+        this.data=data;
+        next=null;
+        pre=null;
+    }
+
+}
+class ListImplement
+{
+    Nodes head;
+    public void push(int data)
+    {
+        Nodes newVal=new Nodes(data);
+        if(head==null)
+        {
+            head=newVal;
+            head.pre=null;
+            head.next=null;
+            return;
+        }
+        newVal.next=head;
+        head.pre=newVal;
+        head=newVal;
+    }
+    public void display()
+    {
+        if(head==null)
+        {
+            System.out.println("Something is wrong!");
+            return;
+        }
+        Nodes temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    public void removceDuplicate()
+    {
+        Nodes temp=head;
+        if(head==null|| head.next==null)
+        {
+            System.out.println("Something is Wring :");
+            return;
+        }
+        while (temp.next!=null)
+        {
+            Nodes check=temp.next;
+            while (check.next!=null)
+            {
+              if(temp.data==check.next.data)
+              {
+                  check.pre.next=check.next;
+                  check.next.pre=check.pre;
+              }
+              check=check.next;
+            }
+            temp=temp.next;
+        }
+    }
+}
+public class DoubliMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImplement obj=new ListImplement();
+        int chose=0;
+        do {
+            System.out.println("Enter value to beinserted : ");
+            obj.push(sc.nextInt());
+            System.out.println("Enter 1 for more value :");
+            chose=sc.nextInt();
+        }while (chose==1);
+        obj.display();
+        obj.removceDuplicate();
+        System.out.println("After Remove \n ");
+        obj.display();
+        System.out.println("Pankaj Sharma !");
+    }
+}
