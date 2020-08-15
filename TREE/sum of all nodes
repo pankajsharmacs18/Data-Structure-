@@ -1,0 +1,106 @@
+package treePract;
+
+import sun.reflect.generics.tree.Tree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+class Node
+{
+    Node left;
+    Node right;
+    int data;
+    public Node(int data)
+    {
+        this.data=data;
+        right=null;
+        left=null;
+    }
+}
+class TreeImplement
+{
+    Node root;
+    public void insert(int data)
+    {
+        Node newVal=new Node(data);
+        if(root==null)
+        {
+            root=newVal;
+            return;
+        }
+
+        Queue<Node> que=new LinkedList<Node>();
+            que.add(root);
+            while (!que.isEmpty())
+            {
+                Node  pre=que.remove();
+                if (pre.left==null)
+                {
+                    pre.left=newVal;
+                    return;
+                }
+                else if (pre.right==null)
+                {
+                    pre.right=newVal;
+                    return;
+                }
+                else
+                    {
+                        que.add(pre.left);
+                        que.add(pre.right);
+                    }
+            }
+    }
+    int sum=0;
+    public void sumOfNodes(Node node)
+    {
+        if (node==null)
+        {
+            return;
+        }
+        sumOfNodes(node.left);
+        sum=sum+node.data;
+        sumOfNodes(node.right);
+
+    }
+    public void sumOfNodes()
+    {
+        sumOfNodes(root);
+        System.out.println("Sum if all nodes "+ sum);
+    }
+    public void printInOrder(Node node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        printInOrder(node.left);
+        System.out.print(node.data+" ");
+        printInOrder(node.right);
+    }
+    void printInOrder()
+    {
+        printInOrder(root);
+    }
+}
+public class TreeMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        TreeImplement obj=new TreeImplement();
+        int chose=0;
+        do {
+            System.out.println("Enter Value to insert  : ");
+            obj.insert(sc.nextInt());
+            System.out.println("Enter 1 for more value " );
+            chose=sc.nextInt();
+        }while (chose==1);
+        obj.printInOrder();
+        obj.sumOfNodes();
+        System.out.println("Pankaj Sharma!");
+
+    }
+}
+
