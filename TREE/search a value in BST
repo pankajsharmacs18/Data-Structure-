@@ -1,0 +1,101 @@
+package bstSearachTree;
+
+import com.sun.javaws.security.AppContextUtil;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    public Node(int data)
+    {
+        this.data=data;
+        left=null;
+        right=null;
+    }
+}
+class BSTimplement
+{
+    Node root;
+    public void insert(int data)
+    {
+        root=insertVal(data,root);
+    }
+    public Node insertVal(int key,Node node)
+        {
+
+            if(node==null)
+            {
+                node=new Node(key);
+                return node;
+            }
+            if(key<node.data)
+            {
+                node.left=insertVal(key,node.left);
+            }
+            else if(node.data<key)
+            {
+                node.right=insertVal(key,node.right);
+            }
+
+            return node;
+        }
+        public void printInOrder(Node node)
+        {
+            if (node==null)
+            {
+                return;
+            }
+            printInOrder(node.left);
+            System.out.print(node.data+" ");
+            printInOrder(node.right);
+        }
+        public void display()
+        {
+            printInOrder(root);
+        }
+        public void searchValue(int value,Node node)
+        {
+            if (node==null)
+            {
+                return;
+            }
+            if (node.data==value)
+            {
+                System.out.println("Value is founded : ");
+                return;
+            }
+            else if(value<node.data)
+            {
+                searchValue(value,node.left);
+            }
+            else {
+                searchValue(value,node.right);
+            }
+        }
+        public void searchValue(int val)
+        {
+            searchValue(val,root);
+        }
+}
+public class BSTmain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        BSTimplement obj=new BSTimplement();
+        int chose=0;
+        do {
+            System.out.println("Enter value to inserted!");
+            obj.insert(sc.nextInt());
+            System.out.println("Enter 1 for more value : ");
+            chose=sc.nextInt();
+        }while (chose==1);
+        obj.display();
+        System.out.println("Enter value to be search : ");
+        obj.searchValue(sc.nextInt());
+        System.out.println("Pankaj Sharma");
+    }
+}
