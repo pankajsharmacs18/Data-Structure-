@@ -1,0 +1,55 @@
+package arraysPract;
+
+import java.util.Scanner;
+
+class ArraysImplemen
+{
+    Scanner sc=new Scanner(System.in);
+    public void insert(int[] arr)
+    {
+        System.out.println("Enter Element in arrays :");
+        for (int i = 0; i <arr.length ; i++)
+        {
+
+            arr[i]=sc.nextInt();
+
+        }
+    }
+    public void rotateArrays(int[] arr,int d)
+    {
+        for (int i = 0; i <d ; i++)
+        {
+            int temp=arr[0];
+            for (int j = 0; j <arr.length-1 ; j++)
+            {
+                arr[j]=arr[j+1];
+            }
+            arr[arr.length-1]=temp;
+        }
+    }
+    public void display(int[] arr)
+    {
+        System.out.println("Arrays is : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+public class ArraysMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ArraysImplemen obj=new ArraysImplemen();
+        System.out.println("Enter size of arrays : ");
+        int[] arr=new int[sc.nextInt()];
+        obj.insert(arr);
+        obj.display(arr);
+        System.out.println("Enter Digree of ratate arrasy : ");
+        int d=sc.nextInt();
+        obj.rotateArrays(arr,d);
+        obj.display(arr);
+        System.out.println("Pankaj Sharma : ");
+    }
+}
