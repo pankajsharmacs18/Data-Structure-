@@ -1,0 +1,65 @@
+package arraysPract;
+
+import java.util.Scanner;
+
+class ArraysImplemen
+{
+    Scanner sc=new Scanner(System.in);
+    public void insert(int[] arr)
+    {
+        System.out.println("Enter Element in arrays :");
+        for (int i = 0; i <arr.length ; i++)
+        {
+
+            arr[i]=sc.nextInt();
+
+        }
+    }
+    public void subarray(int[] arr)
+    {
+        int sum=0;
+        int fine=0;
+        System.out.println("These are subArrays  : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+
+            for (int j = i; j <arr.length ; j++)
+            { sum=0;
+                System.out.println();
+            for (int k = i; k <=j ; k++)
+                {
+                   sum=sum+arr[i];
+                    System.out.print(arr[i]+" ");
+            }
+            if(sum>fine)
+            {
+                fine=sum;
+            }
+                System.out.print(" = "+sum);
+            }
+        }
+        System.out.println("Largest sum is   : "+fine);
+    }
+    public void display(int[] arr)
+    {
+        System.out.println("Arrays is : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+public class ArraysMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ArraysImplemen obj=new ArraysImplemen();
+        System.out.println("Enter size of arrays : ");
+        int[] arr=new int[sc.nextInt()];
+        obj.insert(arr);
+        obj.display(arr);
+        obj.subarray(arr);
+        System.out.println("Pankaj Sharma : ");
+    }
+}
