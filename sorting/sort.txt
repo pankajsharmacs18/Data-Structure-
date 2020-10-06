@@ -1,0 +1,13 @@
+lst=[]
+for i in range(int(input("Enter Range of number"))):
+    lst.append(int(input("Enter Value: ")))
+print("Entered List is :",lst)
+
+for i in range(1,len(lst)):
+    j=i-1;
+    key=lst[i]
+    while(j>=0 and lst[j]>key):
+        lst[j+1]=lst[j]
+        j=j-1
+    lst[j+1]=key
+print("Sorted List is ",lst)
