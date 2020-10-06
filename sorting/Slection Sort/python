@@ -1,0 +1,11 @@
+lst=[]
+for i in range(int(input("Enter range of list"))):
+    lst.append(int(input("Enter Value")))
+print("Entered List is ",lst)
+for i in range(len(lst)):
+    m=i
+    for j in range(i+1,len(lst)):
+        if(lst[j]<lst[m]):
+            m=j
+    lst[i],lst[m]=lst[m],lst[i]
+print(" Sorted List " ,lst)
