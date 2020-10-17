@@ -1,0 +1,82 @@
+package countSort;
+
+import java.util.Scanner;
+
+class CountSort
+{
+    Scanner sc=new Scanner(System.in);
+    public void intsertArrays(int[] arr)
+    {
+        System.out.println("Enter Element in arrays : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+        arr[i]=sc.nextInt();
+        }
+    }
+    public void displaArrays(int[] arr)
+    {
+        for (int i:arr)
+        {
+            System.out.print(i+" ");
+        }
+    }
+    public int max(int[] arr)
+    {
+        int max=arr[0];
+        for (int i = 1; i < arr.length; i++)
+        {
+        if (arr[i]>max)
+        {
+            max=arr[i];
+        }
+        }
+        return  max;
+    }
+    public void coutingSort(int[] arr)
+    {
+        int n=arr.length;
+        int out[]=new int[n];
+        int  [] count=new int[max(arr)+1];
+        // inilialize the arrays with zero
+        for (int i = 0; i < count.length; i++)
+        {
+        count[i]=0;
+        }
+
+        for (int i = 0; i <n; i++)
+        {
+            ++count[arr[i]];
+        }
+        for (int i = 1; i <count.length ; i++)
+        {
+            count[i]=count[i-1]+count[i];
+        }
+        for (int i = n-1; i >=0 ; i--)
+        {
+        out[count[arr[i]]-1]=arr[i];
+        --count[arr[i]];
+        }
+        for (int i = 0; i <n ; i++)
+        {
+        arr[i]=out[i];
+        }
+    }
+}
+public class CountingMain
+{
+
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        CountSort obj=new CountSort();
+        System.out.println("Enter size of arrays ");
+        int[] arr=new int[sc.nextInt()];
+        obj.intsertArrays(arr);
+
+        obj.displaArrays(arr);
+        obj.coutingSort(arr);
+        System.out.println("Sorted Arrays Is : ");
+        obj.displaArrays(arr);
+        System.out.println("Pankaj Sharma ");
+    }
+}
