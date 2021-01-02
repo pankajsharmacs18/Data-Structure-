@@ -1,0 +1,64 @@
+package arraysPractice;
+
+import java.util.Scanner;
+
+class ArraysImplememnt
+{
+    int len;
+    Scanner sc=new Scanner(System.in);
+    public void inputArrays(int[] arr)
+    {
+        System.out.println("Enter Value in Arrays ");
+        {
+            for (int i = 0; i <arr.length ; i++)
+            {
+            arr[i]=sc.nextInt();
+            }
+        }
+    }
+    public void removeGivenElement(int[] arr)
+    {
+         len=arr.length;
+        System.out.println("Enter Element to be remove : ");
+        int val=sc.nextInt();
+        int idx=Integer.MAX_VALUE;
+        for (int i = 0; i <arr.length-1 ; i++)
+        {
+
+            if (arr[i]==val)
+            {
+                idx=i;
+            }
+            if (i>=idx)
+            {
+                arr[i]=arr[i+1];
+            }
+        }
+        
+        len--;
+    }
+    public void display(int[] arr)
+    {
+        System.out.println("\n NoW Arrays is :");
+        for (int i = 0; i <len; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+public class ArraysPract
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ArraysImplememnt obj=new ArraysImplememnt();
+        System.out.println("Enter size of arrays : ");
+        int[] arr=new int[sc.nextInt()];
+        obj.inputArrays(arr);
+        obj.display(arr);
+        obj.removeGivenElement(arr);
+        obj.display(arr);
+        System.out.println("Pankaj Sharma");
+
+    }
+}
