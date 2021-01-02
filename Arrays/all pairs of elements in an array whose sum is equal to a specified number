@@ -1,0 +1,59 @@
+package arraysPractice;
+
+import java.util.Scanner;
+
+class ArraysImplememnt
+{
+    int len;
+    Scanner sc=new Scanner(System.in);
+    public void inputArrays(int[] arr)
+    {
+        System.out.println("Enter Value in Arrays ");
+        {
+            for (int i = 0; i <arr.length ; i++)
+            {
+            arr[i]=sc.nextInt();
+            }
+        }
+    }
+
+    public void findPair(int[] arr)
+    {
+        System.out.println("Enter Value to be find their Pair : ");
+        int value=sc.nextInt();
+        for (int i = 0; i <arr.length; i++)
+        {
+            for (int j = 0; j <arr.length ; j++)
+            {
+            if (arr[i]+arr[j]==value)
+            {
+                System.out.println(" ("+arr[i]+","+arr[j]+" )"+" = "+value);
+            }
+            }
+        }
+        System.out.println(" \n All Pair is ");
+    }
+    public void display(int[] arr)
+    {
+        System.out.println("\n NoW Arrays is :");
+        for (int i = 0; i <len; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+public class ArraysPract
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ArraysImplememnt obj=new ArraysImplememnt();
+        System.out.println("Enter size of arrays : ");
+        int[] arr=new int[sc.nextInt()];
+        obj.inputArrays(arr);
+        obj.display(arr);
+        obj.findPair(arr);
+        System.out.println("Pankaj Sharma");
+
+    }
+}
