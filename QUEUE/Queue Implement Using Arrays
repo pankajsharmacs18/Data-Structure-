@@ -1,0 +1,83 @@
+package javaQueuePractice;
+
+import java.util.Scanner;
+
+class QueueImplememt
+{
+    int[] ArrayQueue;
+    int inque=0;
+    int deque=0;
+    public QueueImplememt (int size)
+    {
+        ArrayQueue=new int[size];
+    }
+    public void inQueue(int value)
+    {
+        if (ArrayQueue.length!=0&&inque<ArrayQueue.length)
+        {
+                ArrayQueue[inque]=value;
+                inque++;
+        }
+        else
+            {
+                System.out.println("Something is Wrong: ");
+            }
+    }
+    public void deQueue()
+    {
+        if (ArrayQueue.length!=0&&deque<inque)
+        {
+            System.out.println(ArrayQueue[deque]);
+            for (int i = 0; i <inque ; i++)
+            {
+                ArrayQueue[i]=ArrayQueue[i+1]; // Shifting Element for right side for utilize Arrys
+            }
+
+        }
+        else
+            {
+                System.out.println("can't Deque Element ");
+            }
+
+    }
+    public void display()
+    {
+        for (int i = 0; i <inque ; i++)
+        {
+            System.out.print(ArrayQueue[i]+" ");
+        }
+    }
+}
+public class QueueMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter size of Queue : ");
+        int size=sc.nextInt();
+        QueueImplememt obj=new QueueImplememt(size);
+        int c=0;
+        do {
+            int cho=0;
+            System.out.println("Ennter 1 for enque element \n 2 for deque element  \n 3 for display Entire List:  ");
+            cho=sc.nextInt();
+            if (cho==1)
+            {
+                System.out.println("Enter Value to be inserted : ");
+                obj.inQueue(sc.nextInt());
+            }
+            else if (cho==2)
+            {
+                obj.deQueue();
+            }
+            else
+                {
+                    obj.display();
+                }
+            System.out.println("Enter 1 FOR more operation :");
+            c=sc.nextInt();
+        }
+        while (c==1);
+        System.out.println("Pankaj Sharma :");
+    }
+}
