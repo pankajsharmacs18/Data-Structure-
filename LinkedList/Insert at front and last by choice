@@ -1,0 +1,92 @@
+package linkedlist;
+
+import java.util.Scanner;
+
+class Node
+{
+     int data;
+     Node next;
+
+
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class ListImplement
+{
+    Node head;
+    public void insertAtLast(int data)
+    {
+            Node newVal=new Node(data);
+            if (head==null)
+            {
+                head=newVal;
+                newVal.next=null;
+                return;
+            }
+            Node temp=head;
+            while (temp.next!=null)
+            {
+                temp=temp.next;
+            }
+            temp.next=newVal;
+    }
+    public void insertAtFront(int data)
+    {
+        Node newVal=new Node(data);
+        if (head==null)
+        {
+            head=newVal;
+            newVal.next=null;
+            return;
+        }
+        newVal.next=head;
+        head=newVal;
+    }
+    public void display()
+    {
+        Node temp=head;
+        while (head==null)
+        {
+            System.out.println("Can;t display ");
+            return;
+        }
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+}
+
+public class LinkedMain
+{
+    public static void main(String... PankajSharma)
+    {
+        ListImplement obj=new ListImplement();
+        Scanner sc=new Scanner(System.in);
+        int c=0;
+        do {
+            System.out.println("Enter value to be insert: ");
+            int val=sc.nextInt();
+            int b=0;
+            System.out.println("1 for front and 2 for last ");
+            b=sc.nextInt();
+            if (b==1)
+            {
+                obj.insertAtFront(val);
+            }
+            else
+                {
+                    obj.insertAtLast(val);
+                }
+            System.out.println("Enter 1 for more value : ");
+             c=sc.nextInt();
+        }while (c==1);
+        obj.display();
+        System.out.println("Pankaj Sharma ");
+
+    }
+}
