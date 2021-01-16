@@ -1,0 +1,89 @@
+package doublyLinkedList;
+
+import java.util.Scanner;
+
+class Node
+{
+    Node next;
+    Node pre;
+    int data;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+        pre=null;
+    }
+}
+class ListImlement
+{
+    Node head;
+    public void insert(int data)
+    {
+        Node newVal=new Node(data);
+        if (head==null)
+        {
+            head=newVal;
+            head.next=null;
+            head.pre=null;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        newVal.pre=temp;
+        temp.next=newVal;
+    }
+    public void displayForward()
+    {
+        if (head==null)
+        {
+            System.out.println("Can't display : ");
+            return;
+        }
+        Node temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    public void displayReverss()
+    {
+        if (head==null)
+        {
+            System.out.println("Cn't display ");
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.pre;
+        }
+    }
+}
+public class Listmain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImlement obj=new ListImlement();
+        int c=0;
+        do {
+            System.out.println("Enter value to be inserte : ");
+            obj.insert(sc.nextInt());
+            System.out.println("enter 1 for more value : ");
+            c=sc.nextInt();
+        }while (c==1);
+        obj.displayForward();
+        System.out.println("\n  list is reverse order  ");
+        obj.displayReverss();
+        System.out.println("Pankaj Sharma");
+    }
+}
