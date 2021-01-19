@@ -1,0 +1,58 @@
+package arraysPartition;
+
+import java.util.Scanner;
+
+class ArraysImplement
+{
+    int[] a1,a2;
+    Scanner sc=new Scanner(System.in);
+    public void insertArrays(int[] arr)
+    {
+        System.out.println("Enter Value in arrays : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+        arr[i]=sc.nextInt();
+        }
+    }
+    public void display(int[] arr)
+    {
+        for (int value : arr)
+        {
+            System.out.print(value +" ");
+        }
+    }
+    public void partitionArrays(int[] arr)
+    {
+        int i,n=arr.length;
+        a1=new int[n/2];
+        a2=new int[n/2];
+        for (i = 0; i <(n/2) ; i++)
+        {
+            a1[i]=arr[i];
+        }
+        for (int j = 0; j <a2.length ; j++)
+        {
+            a2[j]=arr[i];
+            i++;
+        }
+        System.out.println("1st Half arrays : ");
+        display(a1);
+        System.out.println("2nd Half arrays : ");
+        display(a2);
+    }
+
+}
+public class ArraysMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ArraysImplement obj=new ArraysImplement();
+        System.out.println("Enter size of arrays : ");
+        int[] arr=new int[sc.nextInt()];
+        obj.insertArrays(arr);
+        obj.display(arr);
+        obj.partitionArrays(arr);
+        System.out.println("Pankaj Sharma " );
+    }
+}
