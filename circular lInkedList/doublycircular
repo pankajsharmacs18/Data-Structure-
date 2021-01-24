@@ -1,0 +1,98 @@
+package doublyLinkedList;
+
+import java.util.Scanner;
+
+class Node
+{
+    Node next;
+    Node pre;
+    int data;
+    public Node(int data)
+    {
+        this.data=data;
+        this.next=null;
+        this.pre=null;
+    }
+}
+class CircularDoublyEmple
+{
+    Node last;
+    public void addFront(int data)
+    {
+        Node newVal=new Node(data);
+        if (last==null)
+        {
+            last=newVal;
+            last.next=last;
+            last.pre=last;
+            return;
+        }
+        newVal.next=last.next;
+        last.next=newVal;
+        newVal.pre=last;
+    }
+    public void addLast(int data)
+    {
+        Node newVal=new Node(data);
+        if (last==null)
+        {
+            last=newVal;
+            last.pre=last;
+            last.next=last;
+            return;
+        }
+        newVal.next=last.next;
+        newVal.pre=last;
+        last.next=newVal;
+        last=newVal;
+    }
+    public void PrintForward()
+    {
+        if (last==null)
+        {
+            System.out.println("Can't display : ");
+            return;
+        }
+        Node p=last.next;
+        while (p!=last)
+        {
+            System.out.print(p.data+"  ");
+            p=p.next;
+        }
+        System.out.print(p.data);
+    }
+    public void printBackWord()
+    {
+        if (last==null)
+        {
+            System.out.println("Can't display : ");
+            return;
+        }
+        Node p=last;
+        while (p!=last.next)
+        {
+            System.out.print(p.data+"  ");
+            p=p.pre;
+        }
+        System.out.print(p.data);
+    }
+}
+public class DoublyMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        CircularDoublyEmple obj=new CircularDoublyEmple();
+        int c=0;
+        do {
+            System.out.println("Enter value to insert: ");
+            //obj.addFront(sc.nextInt());
+            obj.addLast(sc.nextInt());
+            System.out.println("Enter 1 for more value : ");
+            c=sc.nextInt();
+        }while (c==1);
+        //obj.PrintForward();
+        obj.printBackWord();
+        System.out.println("Pankaj Sharma : ");
+    }
+}
