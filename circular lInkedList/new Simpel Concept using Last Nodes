@@ -1,0 +1,77 @@
+package circularLinkedList;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    public Node(int data)
+    {
+        this.data=data;
+    }
+}
+class CircularList
+{
+    Node last;
+    public void insertLast(int data)
+    {
+        Node newVal=new Node(data);
+        if (last==null)
+        {
+            last=newVal;
+            last.next=last;
+            return;
+        }
+        newVal.next=last.next;
+        last.next=newVal;
+        last=newVal;
+    }
+    public void display()
+    {
+        if (last==null)
+        {
+            System.out.println("Can't display : ");
+            return;
+        }
+        Node temp=last.next;
+        while (temp!=last)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+
+        }
+        System.out.print(temp.data);
+
+    }
+    public void addFront(int data)
+    {
+        Node newVal=new Node(data);
+        if (last==null)
+        {
+            last=newVal;
+            last.next=newVal;
+            return;
+        }
+        newVal.next=last.next;
+        last.next=newVal;
+    }
+}
+public class CircularMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        CircularList obj=new CircularList();
+        int c=0;
+        do {
+            System.out.println("Enter Value to insert: ");
+            //obj.insertLast(sc.nextInt());
+            obj.addFront(sc.nextInt());
+            System.out.println("Enter 1 for more value : ");
+             c=sc.nextInt();
+        }while (c==1);
+        obj.display();
+        System.out.println("Pankaj Sharma: ");
+    }
+}
