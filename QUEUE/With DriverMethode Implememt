@@ -1,0 +1,144 @@
+package queuePractice;
+
+import javafx.scene.transform.Scale;
+
+import java.util.Scanner;
+import java.util.function.ToIntFunction;
+
+class QueueArray
+{   Scanner sc=new Scanner(System.in);
+    int front;
+    int rear;
+    int[] arr;
+    public  QueueArray(int size)
+    {
+        int front=0;
+        int rear=0;
+        arr=new int[size];
+        System.out.println("Queue Is created of size "+size);
+    }
+
+    public void enQueue(int value)
+    {
+        if (isFull())
+        {
+            System.out.println("Queue is full : so can't inserted :");
+            return;
+        }
+        arr[rear]=value;
+        rear++;
+    }
+    public void deQueue()
+    {
+        if (isEmpty())
+        {
+            System.out.println("CAN'T Dqueue Elmement : ");
+            return;
+        }
+        for (int i = 0; i <rear-1 ; i++)
+        {
+        arr[i]=arr[i+1];
+        }
+        rear--;
+    }
+    public void display()
+    {
+        if (isEmpty())
+        {
+            System.out.println("can't display anything");
+            return;
+        }
+        for (int i = 0; i <rear; i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+    public void driverMethod()
+    {
+        int c=0;
+        System.out.println("Choose best option for best operation \n 1 for enqueu \n 2 for dequeue \n 3 for display ");
+        c=sc.nextInt();
+        if (c==1)
+        {
+            int v=0;
+            do {
+                System.out.println("Enter Value to be insert : ");
+                enQueue(sc.nextInt());
+                System.out.println("Enter 1 for more Value : ");
+                v=sc.nextInt();
+            }while (v==1);
+            System.out.println("Affected Arrays is : ");
+            display();
+            driverMethod();
+
+        }
+        else if (c==2)
+        {
+            int v=0;
+            do {
+                    deQueue();
+                System.out.println("Enter 1 for More Enqueue: ");
+                v=sc.nextInt();
+            }while (v==1);
+            display();
+            driverMethod();
+        }
+        else if (c==3)
+        {
+            display();
+            driverMethod();
+        }
+        else if(c==4)
+        {
+            peekElement();
+            driverMethod();
+        }
+            {
+                driverMethod();
+            }
+    }
+    public boolean isFull()
+    {
+        if (rear==arr.length)
+        {
+            return true;
+        }
+        else
+            {
+                return false;
+            }
+    }
+    public boolean isEmpty()
+    {
+        if (rear==front)
+        {
+            return true;
+        }
+        else
+            {
+                return false;
+            }
+    }
+    public void peekElement()
+    {
+        if (isEmpty())
+        {
+            System.out.println("Can't Peek Element ");
+            return;
+        }
+
+            System.out.print(arr[rear-1]);
+
+    }
+}
+public class QueueMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+    System.out.println("Enter size of Queue : ");
+    QueueArray obj=new QueueArray(sc.nextInt());
+    obj.driverMethod();
+        System.out.println("Pankaj Sharma :");
+    }
+}
