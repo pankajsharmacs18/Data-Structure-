@@ -1,0 +1,115 @@
+package linkedList;
+
+import java.util.Scanner;
+
+class Node{
+int data;
+Node next;
+public Node(int data)
+{
+    this.data=data;
+    next=null;
+}
+}
+ class ListImple
+ {
+     Node head;
+     public void addFront(int data)
+     {
+         Node newVal=new Node(data);
+         if (head==null)
+         {
+             head=newVal;
+             return;
+         }
+         newVal.next=head;
+         head=newVal;
+     }
+     public void display()
+     {
+         Node temp=head;
+         if (head==null)
+         {
+             System.out.println("Can't display Anything : ");
+             return;
+         }
+         while (temp!=null)
+         {
+             System.out.print(temp.data+"  ");
+             temp=temp.next;
+         }
+     }
+     public void addLast(int data)
+     {
+         Node newVal=new Node(data);
+      if (head==null)
+      {
+          head=newVal;
+          return;
+      }
+      Node temp=head;
+      while (temp.next!=null)
+      {
+          temp=temp.next;
+      }
+      temp.next=newVal;
+
+     }
+     public void addAfter(int aft,int val)
+     {
+         Node temp=head;
+         while (temp.next!=null && temp.data!=aft)
+         {
+             temp=temp.next;
+         }
+         Node newVal=new Node(val);
+         newVal.next=temp.next;
+         temp.next=newVal;
+     }
+     public void deleteRepeat()
+     {
+     Node curr=head,temp=null,ter=null;
+            while (curr!=null)
+            {
+                temp=curr;
+                ter=curr.next;
+                while (ter!=null)
+                {
+                    if (ter.data== curr.data)
+                    {
+                        temp.next=ter.next;
+                    }
+                    else
+                        {
+                            temp=ter;
+                        }
+
+                    ter=ter.next;
+                }
+
+                curr=curr.next;
+
+            }
+     }
+ }
+public class ListMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+            ListImple obj=new ListImple();
+            int c=0;
+            do {
+                System.out.println("Enter value to inserted : ");
+                obj.addLast(sc.nextInt());
+                System.out.println("Enter 1 for more Value ");
+                c=sc.nextInt();
+            }while (c==1);
+            obj.display();
+           // obj.addAfter(5,10);
+        obj.deleteRepeat();
+        System.out.println("List after remove repeated Element  \n");
+        obj.display();
+        System.out.println("Pankaj Sharma ");
+    }
+}
