@@ -1,0 +1,100 @@
+package matrix;
+
+import java.util.Scanner;
+
+class MatrixImple
+{
+    int r=0,l=0;
+    Scanner sc=new Scanner(System.in);
+    public void insertValue(int[][] mtr)
+    {
+        System.out.println("Enter value in matrix : ");
+        for (int i = 0; i <mtr.length ; i++)
+        {
+            for (int j = 0; j <mtr[0].length ; j++)
+            {
+            mtr[i][j]=sc.nextInt();
+            }
+        }
+
+    }
+    public void display(int[][] mtr)
+    {
+        for (int i = 0; i <mtr.length ; i++)
+        {
+            for (int j = 0; j <mtr[0].length ; j++)
+            {
+                System.out.print(mtr[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+    public int leftDiagonal(int[][] mtr)
+    {
+        for (int i = 0; i <mtr.length ; i++)
+        {
+            for (int j = 0; j < mtr[0].length; j++)
+            {
+            if (i==j)
+            {
+                l=l+mtr[i][j];
+                System.out.print(mtr[i][j]+ " ");
+            }
+            else
+                {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+        return l;
+    }
+    public int rihgtDiagonal(int[][] mtr)
+    {
+        for (int i = 0; i < mtr.length; i++)
+        {
+            for (int j = 0; j <mtr[0].length ; j++)
+            {
+            if (i==mtr[0].length-j-1)
+            {   r=r+mtr[i][j];
+                System.out.print(mtr[i][j]+" ");
+            }
+            else
+                {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+        return r;
+    }
+    public void diagonalDiffrence(int[][] mtr)
+    {
+        if (mtr.length!=mtr[0].length)
+        {
+            System.out.println("Matrix is not square :");
+            return;
+        }
+        System.out.println("Difference is "+Integer.parseInt(String.valueOf(leftDiagonal(mtr)-rihgtDiagonal(mtr))));
+    }
+
+}
+public class Matrix
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        MatrixImple obj=new MatrixImple();
+        System.out.println("Enter row of matrics : ");
+        int row=sc.nextInt();
+        System.out.println("Enter Columns of matrix : ");
+        int col=sc.nextInt();
+        int mtr[][]=new int[row][col];
+        obj.insertValue(mtr);
+        obj.display(mtr);
+        obj.leftDiagonal(mtr);
+        obj.rihgtDiagonal(mtr);
+        obj.diagonalDiffrence(mtr);
+        System.out.println("Pankaj sharma : ");
+    }
+}
