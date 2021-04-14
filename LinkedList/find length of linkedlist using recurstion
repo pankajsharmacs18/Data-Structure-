@@ -1,0 +1,78 @@
+package linkedlist;
+
+import com.sun.jdi.Value;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+class Node
+{
+        Node next;
+        int data;
+        public Node(int data)
+        {
+            this.data=data;
+            next=null;
+        }
+}
+class ListImple
+{
+Node head;
+public void addLast(int data)
+{
+    Node newVal=new Node(data);
+    if (head==null)
+    {
+        head=newVal;
+            head.next=null;
+        return;
+    }
+    Node temp=head;
+    while (temp.next!=null)
+    {
+        temp=temp.next;
+    }
+    temp.next=newVal;
+}
+public void display()
+{
+    Node temp=head;
+    while (temp!=null)
+    {
+        System.out.print(temp.data+" ");
+        temp=temp.next;
+    }
+}
+    public int findLenthUseRecursion(Node node)
+    {
+       if (node==null)
+       {
+           return 0;
+       }
+       return 1+findLenthUseRecursion(node.next);
+
+    }
+    public void countLength()
+    {
+        int len=findLenthUseRecursion(head);
+        System.out.println("size of linkedlist is : "+len);
+    }
+}
+public class LinkedMain
+{
+    public static void main(String... PankajSharma)
+    {
+        ListImple obj=new ListImple();
+        Scanner sc=new Scanner(System.in);
+        int c=0;
+        do {
+            System.out.println("Enter value to be insert : ");
+            obj.addLast(sc.nextInt());
+            System.out.println("Enter 1 for more value :");
+            c=sc.nextInt();
+        }while (c==1);
+        obj.display();
+        obj.countLength();
+         System.out.println("Pankaj Sharma ");
+    }
+}
