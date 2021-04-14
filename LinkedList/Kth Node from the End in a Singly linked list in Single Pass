@@ -1,0 +1,91 @@
+package linkedlist;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+class Node
+{
+        Node next;
+        int data;
+        public Node(int data)
+        {
+            this.data=data;
+            next=null;
+        }
+}
+class ListImple
+{
+Node head;
+public void addLast(int data)
+{
+    Node newVal=new Node(data);
+    if (head==null)
+    {
+        head=newVal;
+            head.next=null;
+        return;
+    }
+    Node temp=head;
+    while (temp.next!=null)
+    {
+        temp=temp.next;
+    }
+    temp.next=newVal;
+}
+public void display()
+{
+    Node temp=head;
+    while (temp!=null)
+    {
+        System.out.print(temp.data+" ");
+        temp=temp.next;
+    }
+}
+public void findNthFromLast(int n)
+{
+    if (head==null)
+    {
+        System.out.println("List is Empty : ");
+    return;
+    }
+   int c=0;
+    //Let's Assume that Length of List is greter then the N .
+                Node temp=head;
+                Node lst=head;
+                while (temp!=null)
+                {
+                    c++;
+                    if (c<=n)
+                    {
+                        temp=temp.next;
+                    }
+                    else
+                    {
+                        temp=temp.next;
+                      lst=lst.next;
+                    }
+                }
+    System.out.println(n+"th Element from last is : "+lst.data);
+
+}
+}
+public class LinkedMain
+{
+    public static void main(String... PankajSharma)
+    {
+        ListImple obj=new ListImple();
+        Scanner sc=new Scanner(System.in);
+        int c=0;
+        do {
+            System.out.println("Enter value to be insert : ");
+            obj.addLast(sc.nextInt());
+            System.out.println("Enter 1 for more value :");
+            c=sc.nextInt();
+        }while (c==1);
+        obj.display();
+        System.out.println("Enter Which element want to access :");
+        int n=sc.nextInt();
+        obj.findNthFromLast(n);
+        System.out.println("Pankaj Sharma ");
+    }
+}
