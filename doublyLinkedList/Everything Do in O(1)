@@ -1,0 +1,69 @@
+package ddlPractice;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    Node pre;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+        pre=null;
+    }
+
+}
+class DoubleImple
+{
+    Node head;
+    Node tail;
+    public void insertAtLast(int data)
+    {
+        Node newVAL =new Node(data);
+        if (head==null)
+        {
+            head=newVAL;
+            tail=newVAL;
+            return;
+        }
+        newVAL.pre=tail;
+        tail.next=newVAL;
+        tail=newVAL;
+    }
+    public void display()
+    {
+        if(head==null)
+        {
+            System.out.println("Nothing to print : ");
+            return;
+        }
+        Node temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+
+        }
+    }
+}
+public class DDLMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        DoubleImple obj=new DoubleImple();
+        int c=0;
+        do {
+            System.out.println("Enter value to be insert : ");
+            obj.insertAtLast(sc.nextInt());
+            System.out.println("Enter 1 for more value : ");
+            c=sc.nextInt();
+        }while (c==1);
+        obj.display();
+
+
+        System.out.println("Pankaj Sharma : ");
+    }
+}
