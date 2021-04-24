@@ -1,0 +1,91 @@
+package circularList;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    public Node (int data)
+    {
+     this.data=data;
+     next=null;
+    }
+}
+class CSLimple
+{
+    Node head;
+    Node tail;
+    public void insertAtLast(int data)
+    {
+        Node newVal=new Node(data);
+        if (head==null)
+        {
+            head=newVal;
+            newVal.next=head;
+            tail=newVal;
+            tail.next=head;
+
+            return;
+        }
+        newVal.next=head;
+        tail.next=newVal;
+        tail=newVal;
+    }
+    public void addFirst(int data)
+    {
+        Node newVal=new Node(data);
+        tail.next=newVal;
+        newVal.next=head;
+        head=newVal;
+    }
+    public void display()
+    {
+        if (head==null)
+        {
+            return;
+        }
+        Node temp=head;
+        while (temp!=tail)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.print(temp.data);
+    }
+    public void deleteGivenNo(int value)
+    {
+        Node temp=head;
+        while (temp!=tail)
+        {
+            if (temp.next.data ==value) {
+                temp.next=temp.next.next;
+            } else {
+            temp=temp.next;
+            }
+        }
+        {
+
+        }
+    }
+}
+public class CircularMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        CSLimple obj=new CSLimple();
+        int c=0;
+        do {
+            System.out.println("Enter value tp be insert : ");
+            obj.insertAtLast(sc.nextInt());
+            System.out.println("Enter 1 for more value : ");
+            c=sc.nextInt();
+        }while (c==1);
+        obj.display();
+        System.out.println("Enter value to be deleted : ");
+        obj.deleteGivenNo(sc.nextInt());
+        System.out.println("After delete ");
+        obj.display();
+    }
+}
