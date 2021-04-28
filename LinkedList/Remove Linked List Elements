@@ -1,0 +1,84 @@
+package linkedlist;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class ListImple
+{
+    Node head;
+    public void insertNode(int data)
+    {
+        Node newVal=new Node(data);
+        if (head==null)
+        {
+            head=newVal;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=newVal;
+    }
+    public void display()
+    {
+        Node temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    public void removeDuplicate(int val)
+    {
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            if (temp.next.data==val)
+            {
+                temp.next=temp.next.next;
+            }
+            else
+                {
+                    temp=temp.next;
+                }
+        }
+        if (head.data==val)
+        {
+            head=head.next;
+        }
+
+    }
+}
+public class ListMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImple obj=new ListImple();
+        int c=0;
+        do {
+
+            System.out.println("Enter value to be isnert : ");
+            obj.insertNode(sc.nextInt());
+            System.out.println("Enter 1 for more value : ");
+            c=sc.nextInt();
+        }while (c==1);
+        obj.display();
+        System.out.println("Value to delete ");
+        obj.removeDuplicate(sc.nextInt());
+        System.out.println("After delete : ");
+        obj.display();
+        System.out.println("Pankaj Sharma ");
+    }
+}
