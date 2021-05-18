@@ -1,0 +1,79 @@
+package stackPractice;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+class InfiniToPostFix
+{
+      static int preced(char c)
+    {
+        switch (c)
+        {
+            case '+':
+            case '-':
+                return 1;
+            case '*':
+            case '/':
+                return 2;
+            case '^':
+            return 3;
+        }
+        return -1;
+    }
+    public String infinixToPost(String str)
+    {
+        String res="";
+        Stack<Character> stack=new Stack<>();
+        for (int i = 0; i <str.length() ; i++)
+        {
+            char c=str.charAt(i);
+            if (Character.isLetterOrDigit(c))
+            {
+                res=res+c;
+            }
+            else if(c=='(')
+            {
+                stack.push(c);
+            }
+            else if(c==')')
+            {
+                while (!stack.isEmpty()&& stack.peek()!='(')
+                {
+                    res =res+stack.pop();
+                }
+                stack.pop();
+            }
+            else
+                {
+                    while (!stack.isEmpty() && preced(c)<=preced(stack.peek()))
+                    {
+                        res=res+stack.pop();
+                    }
+                    stack.push(c);
+                }
+        }
+        while (!stack.isEmpty())
+        {
+            if (stack.peek()=='(')
+            {
+                return "INVALID STRING !";
+            }
+            res=res+stack.pop();
+        }
+        return res;
+    }
+}
+public class StackMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        InfiniToPostFix obj=new InfiniToPostFix();
+        System.out.println("Enter Infinix Expresion :  ");
+        String exp=sc.next();
+        String res=obj.infinixToPost(exp);
+        System.out.println("Post Fix Expression : "+res);
+
+        System.out.println("Pankaj Sharma :");
+    }
+}
