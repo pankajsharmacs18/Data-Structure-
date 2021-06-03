@@ -1,0 +1,78 @@
+package treeImplement;
+
+import java.util.Scanner;
+
+class Node
+{
+    Node left;
+    Node right;
+    int data;
+    public Node(int data)
+    {
+        this.data=data;
+        left=null;
+        right=null;
+    }
+}
+class BSTimple
+{
+    Node root;
+    public void insertNode(int data)
+    {
+        root=insert(root,data);
+    }
+    public Node insert(Node root,int data)
+    {
+        if (root==null)
+        {
+            root=new Node(data);
+            return root;
+        }
+        if(root.data<data)
+        {
+            System.out.println(data+" Insert At Right of "+root.data);
+            root.right=insert(root.right,data);
+        }
+        if (root.data>data)
+        {
+            System.out.println(data+" Insert Left of "+root.data);
+            root.left=insert(root.left,data);
+
+        }
+        return  root;
+    }
+    public void display()
+    {
+        if(root==null)
+        {
+            System.out.println("Cna't Print Atything ! ");
+            return;
+        }
+        printInOrder(root);
+    }
+    public void printInOrder(Node node)
+    {
+        if (node==null)
+        {return;}
+        printInOrder(node.left);
+        System.out.print(node.data+" ");
+        printInOrder(node.right);
+    }
+}
+public class treeMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        BSTimple obj=new BSTimple();
+        int c=0;
+        do {
+            System.out.println("Enter value  to be insert : ");
+            obj.insertNode(sc.nextInt());
+            System.out.println("Enter 1 for more value : ");
+            c=sc.nextInt();
+        }while (c==1);
+        obj.display();
+        System.out.println("Pankaj Sharma ");
+    }
+}
