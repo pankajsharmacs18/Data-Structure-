@@ -1,0 +1,96 @@
+package linkedList;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+
+}
+class  ListImple
+{
+    Node head;
+    public void insertVal(int data)
+    {
+        Node newVal=new Node(data);
+        if (head==null)
+        {
+            head=newVal;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=newVal;
+    }
+    public void display()
+    {
+        Node temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    public void palindrome()
+    {
+        LinkedList lst=new LinkedList();
+        Node temp=head;
+        while (temp!=null)
+        {
+            lst.add(temp.data);
+            temp=temp.next;
+        }
+        temp=head;
+        boolean dec=true;
+        int i=lst.size()-1;
+        while (temp!=null)
+        {
+           int val= (int) lst.get(i);
+           if(val!=temp.data)
+           {
+            dec=false;
+            }
+           temp=temp.next;
+           i--;
+        }
+        if (dec)
+        {
+            System.out.println("Palindrome ");
+        }
+        else
+            {
+                System.out.println("Not ");
+            }
+    }
+
+}
+public class ListMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImple obj=new ListImple();
+        int c;
+        do {
+            System.out.println("Enter value to be insert : ");
+            obj.insertVal(sc.nextInt());
+            System.out.println("Enter 1 for more value ");
+            c=sc.nextInt();
+        }while (c==1);
+        obj.display();
+
+        obj.palindrome();
+        System.out.println("Pankaj Sharma ");
+
+    }
+}
