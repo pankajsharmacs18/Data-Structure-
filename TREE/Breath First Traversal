@@ -1,0 +1,133 @@
+package treeBreadhFirstSearch;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    public Node(int data)
+    {
+        this.data=data;
+        left=right=null;
+    }
+}
+class TreeImple
+{
+    Node root;
+    public  void insertVal(int val)
+    {
+        Node newVal=new Node(val);
+        if (root==null)
+        {
+            root=newVal;
+            return;
+        }
+        Queue<Node> que=new LinkedList<>();
+        que.add(root);
+        while (!que.isEmpty())
+        {
+            Node temp=que.remove();
+            if (temp.left==null)
+            {
+                temp.left=newVal;
+                return;
+            }
+            if (temp.right==null)
+            {
+                temp.right=newVal;
+                return;
+            }
+            else
+                {
+                    que.add(temp.left);
+                    que.add(temp.right);
+                }
+        }
+
+    }
+    public void display(Node node)
+    {
+        if (node==null)
+        {
+            return;
+        }
+        display(node.left);
+        System.out.print(node.data+" ");
+        display(node.right);
+    }
+    public void display()
+    {
+        if (root==null)
+        {
+            System.out.println("Nothing to Display " );
+                        return;
+        }
+        display(root);
+    }
+    public int height(Node node)
+    {
+        if (node==null)
+        {
+            return 0;
+        }
+        else
+            {
+                int l=height(node.left);
+                int r=height(node.right);
+                return  Math.max(l+1,r+1);
+            }
+    }
+    public void levelOrder()
+    {
+        if (root==null)
+        {
+            System.out.println("Nothing to display !");
+            return;
+        }
+        int h=height(root);
+        for (int i = 1; i <= h; i++)
+        {
+        printLevelOrer(root,i);
+        }
+    }
+    public void printLevelOrer(Node node,int l)
+    {
+        if (node==null)
+        {
+            return;
+        }
+        if (l==1)
+        {
+            System.out.println( node.data+" ");
+        }
+        else if(l>1)
+        {
+            printLevelOrer(node.left,l-1);
+            printLevelOrer(node.right,l-1);
+        }
+    }
+}
+public class TreeMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        TreeImple obj=new TreeImple();
+        int c;
+        do {
+            System.out.println("Enter value  to insert : ");
+            obj.insertVal(sc.nextInt());
+            System.out.println("Ener 1 for more value ");
+            c=sc.nextInt();
+        }while (c==1);
+        System.out.println("Depth First Search  :");
+        obj.display();
+        System.out.println(" \n Level Order Traversal ");
+        obj.levelOrder();
+        System.out.println("Pankaj Sharma");
+    }
+}
