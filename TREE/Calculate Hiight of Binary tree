@@ -1,0 +1,111 @@
+package treePractice;
+
+import javax.security.sasl.SaslClient;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    public Node(int data)
+    {
+        this.data=data;
+        left=right=null;
+    }
+}
+class TreeImple
+{
+    int d=0;
+    Node root;
+    public void insertValue(int value)
+    {
+        Node newVal=new Node(value);
+        if (root==null)
+        {
+            root=newVal;
+            return;
+        }
+        Queue<Node> que=new LinkedList<>();
+        que.add(root);
+        while (!que.isEmpty())
+        {
+            Node temp=que.remove();
+            if (temp.left==null)
+            {
+                temp.left=newVal;
+                return;
+            }
+            if (temp.right==null)
+            {
+                temp.right=newVal;
+                return;
+            }
+            else
+                {
+                    que.add(temp.left);
+                    que.add(temp.right);
+                }
+        }
+
+    }
+    public void display(Node node)
+    {
+        if (node==null)
+        {
+            return;
+        }
+        display(node.left);
+        System.out.print(node.data+" ");
+        display(node.right);
+    }
+    public void display()
+    {
+        if (root==null)
+        {
+            System.out.println("Can't display anything !");
+            return;
+        }
+        display(root);
+    }
+    public int height(Node node)
+    {
+
+        if (node==null)
+            return 0;
+        System.out.println("Height "+d);
+        d++;
+        int l=height(node.left);
+        int r=height(node.right);
+        return Math.max(l+1, r+1);
+    }
+    public void calHeight()
+    {
+        if (root==null)
+        {
+            System.out.println("CAN'T CALCULATE Height ");
+            return;
+        }
+        System.out.println("Height of tree "+height(root));
+    }
+}
+public class TreeMain
+{
+    public static void main(String... PankajShatma)
+    {
+        Scanner sc=new Scanner(System.in);
+        TreeImple obj=new TreeImple();
+        int c;
+        do {
+            System.out.println("Enter value to be insert : ");
+            obj.insertValue(sc.nextInt());
+            System.out.println("Enter 1 for more value : ");
+            c=sc.nextInt();
+        }while (c==1);
+        obj.display();
+        obj.calHeight();
+        System.out.println("Pankaj Sharma");
+    }
+}
