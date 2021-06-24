@@ -1,0 +1,80 @@
+package stringPract;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+class StringImple
+{
+    public void validParenthesis(String str)
+    {
+        Stack<Character> stc= new Stack<>();
+        boolean res=true;
+        for (int i = 0; i < str.length() ; i++)
+        {
+         if(str.charAt(i)=='(' || str.charAt(i)=='{' || str.charAt(i)=='[')
+         {
+             stc.push(str.charAt(i));
+         }
+         if(str.charAt(i)==')' || str.charAt(i)=='}' ||str.charAt(i)==']')
+             {
+                 if (str.charAt(i)==')')
+                 {
+                     if(stc.peek()!='(')
+                     {
+                         res=false;
+
+                     }
+                     else
+                         {
+                             stc.pop();
+                         }
+
+                 }
+                 else if(str.charAt(i)=='}')
+                 {
+                     if (stc.peek()!='{')
+                     {
+                         res=false;
+
+                     }
+                     else
+                         {
+                             stc.pop();
+                         }
+                 }
+                 else if(str.charAt(i)==']')
+                 {
+                     if (stc.peek()!='[')
+                     {
+                         res=false;
+                     }
+                     else
+                         {
+                             stc.pop();
+                         }
+                 }
+             }
+         if (!res)
+         {
+             System.out.println("Parenthesis not valid : ");
+                return;
+         }
+        }
+        System.out.println("Parenthesis is valid : ");
+        }
+}
+public class StringMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        StringImple obj=new StringImple();
+        System.out.println("Entrer String " );
+        String str=sc.nextLine();
+        System.out.println("Enter String is "+str);
+        obj.validParenthesis(str);
+        System.out.println("Pankaj Sharma");
+    }
+
+
+}
