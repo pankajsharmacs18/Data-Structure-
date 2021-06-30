@@ -1,0 +1,54 @@
+package queueImple;
+
+import java.util.Scanner;
+
+class ArrysImple
+{
+    Scanner sc=new Scanner(System.in);
+    public void revereArrys(int[] arr)
+    {
+        int s=0;
+        int l=arr.length-1;
+        while (s<l)
+        {
+            int t=arr[l];
+            arr[l]=arr[s];
+            arr[s]=t;
+            s++;
+            l--;
+        }
+    }
+    public void insertVal(int[] arr)
+    {
+        System.out.println("Enter value to be insert : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            arr[i]=sc.nextInt();
+
+        }
+    }
+    public void display(int[] arr)
+    {
+        for (int j : arr) {
+            System.out.print(j + " ");
+
+        }
+    }
+}
+public class ArraysMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ArrysImple obj=new ArrysImple();
+        System.out.println("Enter size of arrays ");
+        int size=sc.nextInt();
+        int[] arr=new int[size];
+        obj.insertVal(arr);
+        obj.display(arr);
+        obj.revereArrys(arr);
+        obj.display(arr);
+
+        System.out.println("Pankaj Sharma");
+    }
+}
