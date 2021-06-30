@@ -1,0 +1,56 @@
+package queueImple;
+
+import java.util.Scanner;
+
+class ArrysImple
+{
+    Scanner sc=new Scanner(System.in);
+    public void rotate(int[] arr,int d)
+    {
+        for (int i = 0; i <d ; i++)
+        {
+        int t=arr[0];
+        for(int j=0;j<arr.length-1;j++)
+        {
+            arr[j]=arr[j+1];
+        }
+        arr[arr.length-1]=t;
+        }
+    }
+    public void insertVal(int[] arr)
+    {
+        System.out.println("Enter value to be insert : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            arr[i]=sc.nextInt();
+
+        }
+    }
+    public void display(int[] arr)
+    {
+        for (int i = 0; i <arr.length ; i++)
+        {
+            System.out.print(arr[i]+" ");
+
+        }
+    }
+}
+public class ArraysMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ArrysImple obj=new ArrysImple();
+        System.out.println("Enter size of arrays ");
+        int size=sc.nextInt();
+        int[] arr=new int[size];
+        obj.insertVal(arr);
+        obj.display(arr);
+        System.out.println("Enter number of digree to be rotate : ");
+        int d=sc.nextInt();
+        obj.rotate(arr,d);
+        System.out.println("Arrays after rotate : ");
+        obj.display(arr);
+        System.out.println("Pankaj Sharma");
+    }
+}
