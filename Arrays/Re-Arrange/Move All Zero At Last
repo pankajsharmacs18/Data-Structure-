@@ -1,0 +1,59 @@
+package queueImple;
+
+import java.util.Scanner;
+
+class ArrysImple
+{
+    Scanner sc=new Scanner(System.in);
+    public void moveZeroLast(int[] arr)
+    {
+        int i=  0, temp=0;
+        for (int j = 0; j <arr.length ; j++)
+        {
+         if (arr[j]!=0)
+         {
+             arr[i]=arr[j];
+             i++;
+         }
+        }
+        while (i<arr.length)
+        {
+            arr[i]=0;
+            i++;
+        }
+    }
+
+    public void insertVal(int[] arr)
+    {
+        System.out.println("Enter value to be insert : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            arr[i]=sc.nextInt();
+
+        }
+    }
+    public void display(int[] arr)
+    {
+        for (int j : arr) {
+            System.out.print(j + " ");
+
+        }
+    }
+}
+public class ArraysMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ArrysImple obj=new ArrysImple();
+        System.out.println("Enter size of arrays ");
+        int size=sc.nextInt();
+        int[] arr=new int[size];
+        obj.insertVal(arr);
+        obj.display(arr);
+        obj.moveZeroLast(arr);
+        System.out.println("After Re-Arrange Arrays : ");
+        obj.display(arr);
+        System.out.println("Pankaj Sharma");
+    }
+}
