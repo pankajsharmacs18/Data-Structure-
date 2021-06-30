@@ -1,0 +1,67 @@
+package queueImple;
+
+import java.util.Scanner;
+
+class ArrysImple
+{
+    Scanner sc=new Scanner(System.in);
+    public void leftRotation(int[] arr,int d)
+    {
+        if (d==0)
+        {
+            return;
+        }
+        int n=arr.length;
+        d=d%n;
+        reverseArray(arr,0,d-1);
+        reverseArray(arr,d,n-1);
+        reverseArray(arr,0,n-1);
+    }
+   public void reverseArray(int [] arr,int st,int end)
+   {
+       int temp;
+       while (st<end)
+       {
+           temp=arr[st];
+           arr[st]=arr[end];
+           arr[end]=temp;
+           st++;
+           end--;
+       }
+   }
+    public void insertVal(int[] arr)
+    {
+        System.out.println("Enter value to be insert : ");
+        for (int i = 0; i <arr.length ; i++)
+        {
+            arr[i]=sc.nextInt();
+
+        }
+    }
+    public void display(int[] arr)
+    {
+        for (int j : arr) {
+            System.out.print(j + " ");
+
+        }
+    }
+}
+public class ArraysMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ArrysImple obj=new ArrysImple();
+        System.out.println("Enter size of arrays ");
+        int size=sc.nextInt();
+        int[] arr=new int[size];
+        obj.insertVal(arr);
+        obj.display(arr);
+        System.out.println("Enter number of digree to be rotate : ");
+        int d=sc.nextInt();
+        obj.leftRotation(arr,d);
+        System.out.println("Arrays after rotate : ");
+        obj.display(arr);
+        System.out.println("Pankaj Sharma");
+    }
+}
