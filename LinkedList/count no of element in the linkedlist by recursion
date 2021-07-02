@@ -1,0 +1,82 @@
+package listPractice;
+
+import java.util.Scanner;
+
+class Node
+{
+    int data;
+    Node next;
+    public Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+}
+class ListImple
+{
+    Node head;
+
+    public void insertAtLast(int data)
+    {
+        Node newVal=new Node(data);
+        if (head==null)
+        {
+            head=newVal;
+            return;
+        }
+        Node temp=head;
+        while (temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=newVal;
+    }
+    public void display()
+    {
+        if (head==null)
+        {
+            System.out.println("Can't display anything! ");
+            return;
+        }
+        Node temp=head;
+        while (temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    public int findlength(Node temp)
+    {
+        if (temp==null)
+        {
+            return 0;
+        }
+        return 1+findlength(temp.next);
+    }
+    public int findLength()
+    {
+        if (head==null)
+        {
+            return 0;
+        }
+        return findlength(head);
+    }
+}
+public class ListMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        ListImple obj=new ListImple();
+
+        do {
+            System.out.println("Enter value to be insert : ");
+            obj.insertAtLast(sc.nextInt());
+            System.out.println("Enter 1 for more value : ");
+
+        }while (sc.nextInt()==1);
+        obj.display();
+        System.out.println("Length of list "+obj.findLength());
+        System.out.println("Pankaj Sharma : ");
+    }
+}
