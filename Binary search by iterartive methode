@@ -1,0 +1,68 @@
+package search;
+
+import java.util.Scanner;
+
+class BinarySearch
+{
+    Scanner sc=new Scanner(System.in);
+    public void inserVal(int[] arr)
+    {
+        System.out.println("Enter value in arrays : ");
+        for (int i = 0; i < arr.length; i++)
+        {
+                arr[i]=sc.nextInt();
+        }
+    }
+    public void display(int[] arr)
+    {
+        for (int j : arr) {
+            System.out.print(j + " ");
+        }
+    }
+public void binarySearch(int[] arr,int val)
+{
+
+    int m,l=0,r=arr.length;
+    while (l<=r )
+    {
+
+        m=(l+r)/2;
+        if (m>=arr.length)
+        {
+            System.out.println("Value not found");
+            return;
+        }
+        if (arr[m]==val)
+        {
+            System.out.println("Element present at index "+ m);
+            return;
+        }
+        if (val>arr[m])
+        {
+            l=m+1;
+        }
+        else
+            {
+                r=m-1;
+            }
+    }
+    System.out.println("Value not found : ");
+}
+}
+public class SerachMain
+{
+    public static void main(String... PankajSharma)
+    {
+        Scanner sc=new Scanner(System.in);
+        BinarySearch obj=new BinarySearch();
+        System.out.println("Enter size of arrays : ");
+        int size=sc.nextInt();
+        int[] arr=new int[size];
+        obj.inserVal(arr);
+        obj.display(arr);
+        System.out.println("Enter value to be search ");
+        int val= sc.nextInt();
+        obj.binarySearch(arr,val);
+        System.out.println("PankajSharma");
+    }
+}
